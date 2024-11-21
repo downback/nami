@@ -1,5 +1,20 @@
+@font-face {
+  font-family: "Paperlogy";
+  src: url("../assets/fonts/Paperlogy-4Regular.ttf") format(ttf);
+}
+
+@font-face {
+  font-family: Anthony;
+  src: url("../assets/fonts/Anthony.woff2") format(woff2),
+    url("../assets/fonts/Anthony.woff") format(woff);
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
   --primary-color: #000;
   --secondary-color: #333;
-  --font-family: "Arial, sans-serif";
+
+  --font-family-primary: "Paperlogy", sans-serif;
+  --font-family-point: "Anthony", sans-serif;
 }

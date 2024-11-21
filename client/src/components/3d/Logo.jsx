@@ -63,72 +63,71 @@ export function Logo(props) {
   // console.log(scene.position)
   // console.log(scene.rotation)
 
-  //   useLayoutEffect(() => {
-  //     new ScrollTrigger({})
-  //     // component About.tsx
-  //     tl.to(scene.position, {
-  //       x: -2.05,
-  //       y: 1.75,
-  //       z: -0.95,
+  useLayoutEffect(() => {
+    new ScrollTrigger({})
+    tl.to(scene.position, {
+      x: -2.05,
+      y: 1.75,
+      z: -0.95,
 
-  //       scrollTrigger: {
-  //         trigger: "#animationTrigger1",
-  //         start: "top bottom",
-  //         end: "bottom bottom",
-  //         scrub: true,
-  //         markers: false,
-  //         id: "trigger1",
+      scrollTrigger: {
+        trigger: "#landing_section-2",
+        start: "top bottom",
+        end: "bottom bottom",
+        scrub: true,
+        markers: false,
+        id: "trigger1",
 
-  //         immediateRender: false,
-  //       },
-  //     })
-  //       .to(scene.rotation, {
-  //         x: -0.68,
-  //         y: -0.44,
-  //         z: -0.31,
+        immediateRender: false,
+      },
+    })
+      .to(scene.rotation, {
+        x: -0.68,
+        y: -0.44,
+        z: -0.31,
 
-  //         scrollTrigger: {
-  //           trigger: "#animationTrigger1",
-  //           start: "top bottom",
-  //           end: "bottom bottom",
-  //           scrub: true,
+        scrollTrigger: {
+          trigger: "#landing_section-2",
+          start: "top bottom",
+          end: "bottom bottom",
+          scrub: true,
 
-  //           immediateRender: false,
-  //         },
-  //       })
+          immediateRender: false,
+        },
+      })
 
-  //       // component - BuyNow.tsx
-  //       .to(scene.position, {
-  //         x: 2.45,
-  //         y: -1.65,
-  //         z: -0.45,
-  //         delay: 2,
-  //         scrollTrigger: {
-  //           trigger: "#animationTrigger2",
-  //           start: "top bottom",
-  //           end: "bottom bottom",
-  //           scrub: true,
-  //           markers: false,
-  //           id: "trigger2",
-  //           immediateRender: false,
-  //         },
-  //       })
-  //       .to(scene.rotation, {
-  //         x: 0.58,
-  //         y: 0.47,
-  //         z: -0.2,
-  //         delay: 2,
-  //         scrollTrigger: {
-  //           trigger: "#animationTrigger2",
-  //           start: "top bottom",
-  //           end: "bottom bottom",
-  //           scrub: true,
-  //           markers: false,
-  //           id: "trigger2",
-  //           immediateRender: false,
-  //         },
-  //       })
-  //   }, [])
+      // component - BuyNow.tsx
+      .to(scene.position, {
+        x: 2.45,
+        y: -1.65,
+        z: -0.45,
+        delay: 2,
+        scrollTrigger: {
+          trigger: "#landing_section-3",
+          start: "top bottom",
+          end: "bottom bottom",
+          scrub: true,
+          markers: false,
+          id: "trigger2",
+          immediateRender: false,
+        },
+      })
+      .to(scene.rotation, {
+        x: 0.58,
+        y: 0.47,
+        z: -0.2,
+        delay: 2,
+        scrollTrigger: {
+          trigger: "#landing_section-3",
+          start: "top bottom",
+          end: "bottom bottom",
+          scrub: true,
+          markers: false,
+          id: "trigger2",
+          immediateRender: false,
+        },
+      })
+  }, [])
 
   return (
     <group
