@@ -15,7 +15,6 @@ export function Logo(props) {
   const logo = useRef()
   const { scene, camera } = useThree()
   const tl = gsap.timeline()
-
   // const { cameraPosition, cameraRotation, scenePosition, sceneRotation } =
   //   useControls({
   //     cameraPosition: {
@@ -63,13 +62,14 @@ export function Logo(props) {
   // console.log(scene.position)
   // console.log(scene.rotation)
 
-  useLayoutEffect(() => {
-    new ScrollTrigger({})
+  //UseGSAP
+
+  useGSAP(() => {
+    // Animation for #landing_section-2
     tl.to(scene.position, {
       x: -2.05,
       y: 1.75,
       z: -0.95,
-
       scrollTrigger: {
         trigger: "#landing_section-2",
         start: "top bottom",
@@ -77,7 +77,6 @@ export function Logo(props) {
         scrub: true,
         markers: false,
         id: "trigger1",
-
         immediateRender: false,
       },
     })
@@ -85,18 +84,16 @@ export function Logo(props) {
         x: -0.68,
         y: -0.44,
         z: -0.31,
-
         scrollTrigger: {
           trigger: "#landing_section-2",
           start: "top bottom",
           end: "bottom bottom",
           scrub: true,
-
           immediateRender: false,
         },
       })
 
-      // component - BuyNow.tsx
+      // Animation for #landing_section-3
       .to(scene.position, {
         x: 2.45,
         y: -1.65,
@@ -127,7 +124,42 @@ export function Logo(props) {
           immediateRender: false,
         },
       })
-  }, [])
+
+      // Animation for #landing_section-4
+      .to(scene.position, {
+        x: 0,
+        y: 0,
+        z: -2.85,
+        delay: 2,
+        scrollTrigger: {
+          trigger: "#landing_section-4",
+          start: "top bottom",
+          end: "bottom bottom",
+          scrub: true,
+          markers: false,
+          id: "trigger2",
+          immediateRender: false,
+        },
+      })
+      .to(scene.rotation, {
+        x: 0,
+        y: 0,
+        z: 0,
+        delay: 2,
+        scrollTrigger: {
+          trigger: "#landing_section-4",
+          start: "top bottom",
+          end: "bottom bottom",
+          scrub: true,
+          markers: false,
+          id: "trigger2",
+          immediateRender: false,
+        },
+      })
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => st.kill())
+    }
+  }, [scene])
 
   return (
     <group
