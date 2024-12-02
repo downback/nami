@@ -26,7 +26,7 @@ function App() {
 export default App
 
 // TODO
-// [ ] Landing Page scroll animation done
+// [x] Landing Page scroll animation done
 // [ ] Booking page image upload + all form set
 // [ ] flash & gallery page connecting with firebase storage
 // [ ] flash & gallery page slider

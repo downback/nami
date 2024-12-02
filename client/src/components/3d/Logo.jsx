@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from "react"
+import React, { useRef, useLayoutEffect, useState } from "react"
 import { useGLTF, useScroll } from "@react-three/drei"
 import { useThree, useFrame } from "@react-three/fiber"
 import gsap from "gsap"
@@ -62,9 +62,27 @@ export function Logo(props) {
   // console.log(scene.position)
   // console.log(scene.rotation)
 
-  //UseGSAP
+  // useFrame(() => {
+  //   logo.current.rotation.y += 0.01 // Add rotation animation
+  // })
 
+  const [stopRotation, setStopRotation] = useState(false)
+
+  useFrame(({ clock }) => {
+    const elapsedTime = clock.getElapsedTime()
+    if (logo.current && !stopRotation) {
+      // logo.current.rotation.y += 0.005
+      logo.current.rotation.x = Math.sin(elapsedTime * 0.3)
+    }
+  })
+
+  //UseGSAP
   useGSAP(() => {
+    tl.from(scene.position, {
+      z: -5,
+      duration: 2.5,
+      ease: "power2.out",
+    })
     // Animation for #landing_section-2
     tl.to(scene.position, {
       x: -2.05,
@@ -78,6 +96,8 @@ export function Logo(props) {
         markers: false,
         id: "trigger1",
         immediateRender: false,
+        onEnter: () => setStopRotation(true),
+        onLeaveBack: () => setStopRotation(false),
       },
     })
       .to(scene.rotation, {
@@ -95,8 +115,8 @@ export function Logo(props) {
 
       // Animation for #landing_section-3
       .to(scene.position, {
-        x: 2.45,
-        y: -1.65,
+        x: 2.15,
+        y: -0.75,
         z: -0.45,
         delay: 2,
         scrollTrigger: {
@@ -110,7 +130,7 @@ export function Logo(props) {
         },
       })
       .to(scene.rotation, {
-        x: 0.58,
+        x: 0.2,
         y: 0.47,
         z: -0.2,
         delay: 2,
@@ -129,7 +149,7 @@ export function Logo(props) {
       .to(scene.position, {
         x: 0,
         y: 0,
-        z: -2.85,
+        z: -2.0,
         delay: 2,
         scrollTrigger: {
           trigger: "#landing_section-4",

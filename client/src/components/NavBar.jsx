@@ -19,8 +19,8 @@ const Navbar = () => {
       .timeline({
         scrollTrigger: {
           start: "top -200",
-          end: "bottom 500",
-          scrub: true,
+          end: "bottom 200",
+          // scrub: true,
           id: "navbar",
           markers: false,
           toggleClass: {
@@ -74,9 +74,18 @@ const Navbar = () => {
       <ul ref={navbar} className={styles.navLinks} id="navWrapper">
         <li>
           <a
-            href="#landing_section-2"
+            href="#landing_section-1"
             className={styles.navItem}
             ref={(el) => (linksRef.current[0] = el)}
+          >
+            HOME
+          </a>
+        </li>
+        <li>
+          <a
+            href="#landing_section-2"
+            className={styles.navItem}
+            ref={(el) => (linksRef.current[1] = el)}
           >
             Flash
           </a>
@@ -85,7 +94,7 @@ const Navbar = () => {
           <a
             href="#landing_section-3"
             className={styles.navItem}
-            ref={(el) => (linksRef.current[1] = el)}
+            ref={(el) => (linksRef.current[2] = el)}
           >
             Booking
           </a>
@@ -94,7 +103,7 @@ const Navbar = () => {
           <a
             href="#landing_section-4"
             className={styles.navItem}
-            ref={(el) => (linksRef.current[2] = el)}
+            ref={(el) => (linksRef.current[3] = el)}
           >
             Gallery
           </a>
