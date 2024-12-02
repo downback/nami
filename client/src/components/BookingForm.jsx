@@ -57,6 +57,7 @@ function BookingForm() {
 
   return (
     <div className={styles.container}>
+      <h1 className={styles.title}>BOOKING</h1>
       <Formik
         initialValues={{
           name: "",
@@ -75,7 +76,9 @@ function BookingForm() {
         {() => (
           <Form className={styles.form}>
             <div className={styles.fieldGroup}>
-              <label htmlFor="name">Full Name</label>
+              <label className={styles.label} htmlFor="name">
+                Full Name
+              </label>
               <Field name="name" type="text" className={styles.input} />
               <ErrorMessage
                 name="name"
@@ -85,7 +88,9 @@ function BookingForm() {
             </div>
 
             <div className={styles.fieldGroup}>
-              <label htmlFor="pronouns">Pronouns</label>
+              <label className={styles.label} htmlFor="pronouns">
+                Pronouns
+              </label>
               <Field name="pronouns" type="text" className={styles.input} />
               <ErrorMessage
                 name="pronouns"
@@ -95,7 +100,9 @@ function BookingForm() {
             </div>
 
             <div className={styles.fieldGroup}>
-              <label htmlFor="email">Email</label>
+              <label className={styles.label} htmlFor="email">
+                Email
+              </label>
               <Field name="email" type="email" className={styles.input} />
               <ErrorMessage
                 name="email"
@@ -105,13 +112,13 @@ function BookingForm() {
             </div>
 
             <div className={styles.fieldGroup}>
-              <label>Design Type</label>
+              <label className={styles.label}>Design Type</label>
               <div role="group" className={styles.radioGroup}>
-                <label>
+                <label className={styles.label}>
                   <Field type="radio" name="designType" value="flash" />
                   Flash
                 </label>
-                <label>
+                <label className={styles.label}>
                   <Field type="radio" name="designType" value="custom" />
                   Custom
                 </label>
@@ -124,8 +131,10 @@ function BookingForm() {
             </div>
 
             <div className={styles.fieldGroup}>
-              <label htmlFor="size">Placement on body and size</label>
-              <Field name="size" as="textarea" className={styles.textarea} />
+              <label className={styles.label} htmlFor="size">
+                Placement on body and size
+              </label>
+              <Field name="size" type="text" className={styles.input} />
               <ErrorMessage
                 name="size"
                 component="div"
@@ -134,7 +143,9 @@ function BookingForm() {
             </div>
 
             <div className={styles.fieldGroup}>
-              <label htmlFor="date">Desired Date</label>
+              <label className={styles.label} htmlFor="date">
+                Desired Date
+              </label>
               <Field name="date" type="date" className={styles.input} />
               <ErrorMessage
                 name="datetime-local"
@@ -144,7 +155,7 @@ function BookingForm() {
             </div>
 
             <div className={styles.fieldGroup}>
-              <label htmlFor="designDetails">
+              <label className={styles.label} htmlFor="designDetails">
                 A detailed description of your idea or flashes piece you would
                 like to get, you can upload an image / my previous work as a
                 reference for custom design
@@ -159,17 +170,24 @@ function BookingForm() {
                 component="div"
                 className={styles.error}
               />
-              <input type="file" id="referenceImage" name="referenceImage" />
+              <input
+                type="file"
+                id="referenceImage"
+                name="referenceImage"
+                className={styles.imageUploader}
+              />
             </div>
 
             <div className={styles.fieldGroup}>
-              <label htmlFor="age">Are you 18+?</label>
+              <label className={styles.label} htmlFor="age">
+                Are you 18+?
+              </label>
               <div role="group" aria-labelledby="my-radio-group">
-                <label>
+                <label className={styles.label}>
                   <Field type="radio" name="age" value="yes" />
                   Yes
                 </label>
-                <label>
+                <label className={styles.label}>
                   <Field type="radio" name="age" value="no" />
                   No
                 </label>
@@ -177,23 +195,17 @@ function BookingForm() {
             </div>
 
             <div className={styles.fieldGroup}>
-              <label htmlFor="medication">Medication</label>
-              <Field
-                name="medication"
-                as="textarea"
-                className={styles.textarea}
-              />
+              <label className={styles.label} htmlFor="medication">
+                Medication
+              </label>
+              <Field name="medication" type="text" className={styles.input} />
             </div>
 
             <div className={styles.fieldGroup}>
-              <label htmlFor="extraInfo">
+              <label className={styles.label} htmlFor="extraInfo">
                 Any other info or questions about your booking?
               </label>
-              <Field
-                name="extraInfo"
-                as="textarea"
-                className={styles.textarea}
-              />
+              <Field name="extraInfo" type="text" className={styles.input} />
             </div>
 
             <button type="submit" className={styles.button}>

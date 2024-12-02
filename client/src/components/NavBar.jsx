@@ -19,7 +19,7 @@ const Navbar = () => {
       .timeline({
         scrollTrigger: {
           start: "top -200",
-          end: "bottom 200",
+          end: "bottom 1000",
           // scrub: true,
           id: "navbar",
           markers: false,

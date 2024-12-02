@@ -27,7 +27,7 @@ export default App
 
 // TODO
 // [x] Landing Page scroll animation done
-// [ ] Booking page image upload + all form set
-// [ ] flash & gallery page connecting with firebase storage
+// [x] Booking page image upload + all form set
 // [ ] flash & gallery page slider
+// [ ] flash & gallery page connecting with firebase storage
 // [ ] Booking page calendar possibility research
