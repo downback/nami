@@ -1,10 +1,10 @@
 import React from "react"
+import SliderView from "../components/ui/SliderView"
 
 const FlashPage = () => {
   return (
     <div>
-      <h1>Flash Page</h1>
-      <p>Check out our unique flash designs!</p>
+      <SliderView folderName="flash/" />
     </div>
   )
 }

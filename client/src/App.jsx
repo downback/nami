@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage"
 import BookingPage from "./pages/BookingPage"
 import FlashPage from "./pages/FlashPage"
 import GalleryPage from "./pages/GalleryPage"
+import AdminPage from "./pages/AdminPage"
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/booking" element={<BookingPage />} />
         <Route path="/flash" element={<FlashPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
+        <Route path="/admin" element={<AdminPage />} />
       </Routes>
     </Router>
   )
@@ -28,6 +30,10 @@ export default App
 // TODO
 // [x] Landing Page scroll animation done
 // [x] Booking page image upload + all form set
-// [ ] flash & gallery page slider
-// [ ] flash & gallery page connecting with firebase storage
+// [x] flash & gallery page slider
+// [x] flash & gallery page connecting with firebase storage
+
+// [ ] Admin page + two components
+// [ ] Wrapper better styling
+// [ ] sliderView error fix
 // [ ] Booking page calendar possibility research
