@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 gsap.registerPlugin(useGSAP)
 
 export function Logo(props) {
-  const { nodes, materials } = useGLTF("/model.glb")
+  const { nodes, materials } = useGLTF("/namilogo.glb")
   const logo = useRef()
   const { scene, camera } = useThree()
   const tl = gsap.timeline()
@@ -189,9 +189,38 @@ export function Logo(props) {
       position={[0, 0, -2.6]}
       rotation={[90, 0, 0]}
     >
-      <mesh geometry={nodes.Asset_3.geometry} material={materials.Matalic} />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh_1.geometry}
+        material={nodes.Mesh_1.material}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh_2.geometry}
+        material={nodes.Mesh_2.material}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh_3.geometry}
+        material={nodes.Mesh_3.material}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh_4.geometry}
+        material={nodes.Mesh_4.material}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Mesh_5.geometry}
+        material={nodes.Mesh_5.material}
+      />
     </group>
   )
 }
 
-useGLTF.preload("/model.glb")
+useGLTF.preload("/namilogo.glb")

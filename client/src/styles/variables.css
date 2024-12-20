@@ -11,10 +11,18 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Refra";
+  src: url("../assets/fonts/Refra.ttf") format(ttf);
+  font-weight: normal; /* Add font-weight property */
+  font-style: normal;
+}
+
 :root {
   --primary-color: #000;
   --secondary-color: #333;
 
   --font-family-primary: "Paperlogy", sans-serif;
   --font-family-point: "Anthony", sans-serif;
+  --font-family-refra: "Refra", sans-serif;
 }

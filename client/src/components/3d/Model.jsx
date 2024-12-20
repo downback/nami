@@ -32,7 +32,7 @@ const Model = () => {
         enableRotate={false}
         enableZoom={false}
       />
-      <Logo scale={0.1} />
+      <Logo scale={10} />
       {/* <Suspense fallback={<Loading />}>
       </Suspense> */}
       <Environment preset="warehouse" />
@@ -41,3 +41,5 @@ const Model = () => {
 }
 
 export default Model
+
+//TODO city | warehouse -> dimmed
