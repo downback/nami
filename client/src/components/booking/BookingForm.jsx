@@ -3,16 +3,20 @@ import axios from "axios"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from "yup"
 import styles from "./BookingForm.module.css"
-import Modal from "./ui/Modal"
+import Modal from "../ui/Modal"
+import { IoCloseOutline } from "react-icons/io5"
+
+import DatePickerForm from "./DatePickerForm"
 
 const BookingFormSchema = Yup.object().shape({
   name: Yup.string().required("Full name is required"),
-  pronouns: Yup.string().required(),
-  email: Yup.string().email("Invalid email").required(),
-  designType: Yup.string().required(),
-  size: Yup.string().required(),
-  date: Yup.date().default(() => new Date()),
+  pronouns: Yup.string().required("Pronouns are required"),
+  email: Yup.string().email("Invalid email").required("Email is required"),
+  designType: Yup.string().required("Design type is required"),
+  size: Yup.string().required("Size is required"),
+  date: Yup.date().nullable().required("Desired date is required"),
   designDetails: Yup.string(),
+  budget: Yup.string().required("Budget is required"),
   age: Yup.string(),
   medication: Yup.string(),
   extraInfo: Yup.string(),
@@ -20,6 +24,8 @@ const BookingFormSchema = Yup.object().shape({
 
 function BookingForm() {
   const [modalVisible, setModalVisible] = useState(false)
+  const [errorVisible, setErrorVisible] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const sendMail = async (values, { resetForm }) => {
     const normalizedValues = Object.fromEntries(
@@ -37,17 +43,25 @@ function BookingForm() {
       formData.append("referenceImage", fileInput.files[0])
     }
 
+    for (let [key, value] of formData.entries()) {
+      console.log(key, value)
+    }
+
     try {
+      setLoading(true)
+      setModalVisible(true)
+      setErrorVisible(false)
       await axios.post("http://localhost:5000/send", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       })
       console.log("Email sent successfully")
-      setModalVisible(true)
       resetForm()
     } catch (error) {
       console.log("Failed to send email", error)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -57,7 +71,7 @@ function BookingForm() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>BOOKING</h1>
+      <div className={styles.title}>Booking</div>
       <Formik
         initialValues={{
           name: "",
@@ -65,19 +79,20 @@ function BookingForm() {
           email: "",
           designType: "",
           size: "",
-          date: "",
+          date: null,
           designDetails: "",
+          budget: "",
           medication: "",
           extraInfo: "",
         }}
         validationSchema={BookingFormSchema}
         onSubmit={sendMail}
       >
-        {() => (
+        {({ isValidating, setFieldValue, values }) => (
           <Form className={styles.form}>
             <div className={styles.fieldGroup}>
               <label className={styles.label} htmlFor="name">
-                Full Name
+                Full Name*
               </label>
               <Field name="name" type="text" className={styles.input} />
               <ErrorMessage
@@ -89,7 +104,7 @@ function BookingForm() {
 
             <div className={styles.fieldGroup}>
               <label className={styles.label} htmlFor="pronouns">
-                Pronouns
+                Pronouns*
               </label>
               <Field name="pronouns" type="text" className={styles.input} />
               <ErrorMessage
@@ -101,7 +116,7 @@ function BookingForm() {
 
             <div className={styles.fieldGroup}>
               <label className={styles.label} htmlFor="email">
-                Email
+                Email*
               </label>
               <Field name="email" type="email" className={styles.input} />
               <ErrorMessage
@@ -112,7 +127,7 @@ function BookingForm() {
             </div>
 
             <div className={styles.fieldGroup}>
-              <label className={styles.label}>Design Type</label>
+              <label className={styles.label}>Design Type*</label>
               <div role="group" className={styles.radioGroup}>
                 <label className={styles.label}>
                   <Field type="radio" name="designType" value="flash" />
@@ -132,7 +147,7 @@ function BookingForm() {
 
             <div className={styles.fieldGroup}>
               <label className={styles.label} htmlFor="size">
-                Placement on body and size
+                Placement on body and size*
               </label>
               <Field name="size" type="text" className={styles.input} />
               <ErrorMessage
@@ -144,11 +159,14 @@ function BookingForm() {
 
             <div className={styles.fieldGroup}>
               <label className={styles.label} htmlFor="date">
-                Desired Date
+                Desired Date*
               </label>
-              <Field name="date" type="date" className={styles.input} />
+              <DatePickerForm
+                selectedDate={values.date}
+                setFieldValue={setFieldValue}
+              />
               <ErrorMessage
-                name="datetime-local"
+                name="date"
                 component="div"
                 className={styles.error}
               />
@@ -175,6 +193,25 @@ function BookingForm() {
                 id="referenceImage"
                 name="referenceImage"
                 className={styles.imageUploader}
+              />
+            </div>
+
+            <div className={styles.fieldGroup}>
+              <label className={styles.label} htmlFor="budget">
+                What is your budget?*
+              </label>
+              <Field name="budget" as="select" className={styles.input}>
+                <option value=" " label="Choose your budget" />
+                <option value="150-250" label="150-250" />
+                <option value="250-350" label="250-350" />
+                <option value="450-550" label="450-550" />
+                <option value="550-650" label="550-650" />
+                <option value="650- " label="650- " />
+              </Field>
+              <ErrorMessage
+                name="budget"
+                component="div"
+                className={styles.error}
               />
             </div>
 
@@ -208,8 +245,31 @@ function BookingForm() {
               <Field name="extraInfo" type="text" className={styles.input} />
             </div>
 
-            <button type="submit" className={styles.button}>
-              Submit Booking
+            <div className={styles.required}>* required</div>
+            {errorVisible && (
+              <div className={styles.submitError}>
+                Please fill all required fields before submitting your booking.
+              </div>
+            )}
+
+            {loading && (
+              <div className={styles.loadingMessage}>
+                Submitting your booking, please wait...
+              </div>
+            )}
+
+            <button
+              type="submit"
+              className={styles.button}
+              onClick={() => {
+                if (!isValidating) {
+                  setErrorVisible(true)
+                } else {
+                  setErrorVisible(false)
+                }
+              }}
+            >
+              SUBMIT
             </button>
           </Form>
         )}
@@ -217,8 +277,28 @@ function BookingForm() {
       <Modal
         isVisible={modalVisible}
         onClose={closeModal}
-        message="Your booking request is sent to NAMI, and you can check the details in your email."
-        buttonText="Go Back to Home"
+        title={
+          loading ? (
+            "Submitting your booking, please wait..."
+          ) : (
+            <p>Your booking request is sent to NAMI!</p>
+          )
+        }
+        message={
+          loading ? (
+            <div className={styles.loadingDots}>
+              <span>.</span>
+              <span>.</span>
+              <span>.</span>
+              <span>.</span>
+            </div>
+          ) : (
+            <p className={styles.test}>
+              You can check the details in your email
+            </p>
+          )
+        }
+        buttonText={<IoCloseOutline />}
       />
     </div>
   )

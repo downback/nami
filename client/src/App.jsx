@@ -5,7 +5,10 @@ import BookingPage from "./pages/BookingPage"
 import FlashPage from "./pages/FlashPage"
 import GalleryPage from "./pages/GalleryPage"
 import AdminPage from "./pages/AdminPage"
-import AdminForm from "./components/AdminForm"
+import AdminForm from "./components/admin/AdminForm"
+import PrivacyPolicy from "./pages/PrivacyPolicy"
+import Imprint from "./pages/Imprint"
+import AdminDateUpdate from "./components/admin/AdminDateUpdate"
 
 function App() {
   return (
@@ -21,6 +24,8 @@ function App() {
         <Route path="/flash" element={<FlashPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/imprint" element={<Imprint />} />
         <Route
           path="/admin/gallery"
           element={<AdminForm folderName="gallery" title="Manage Gallery" />}
@@ -29,6 +34,7 @@ function App() {
           path="/admin/flash"
           element={<AdminForm folderName="flash" title="Manage Flash" />}
         />
+        <Route path="/admin/dates" element={<AdminDateUpdate />} />
       </Routes>
     </Router>
   )
@@ -37,24 +43,31 @@ function App() {
 export default App
 
 // TODO
-// [x] Landing Page scroll animation done
-// [x] Booking page image upload + all form set
-// [x] flash & gallery page slider
-// [x] flash & gallery page connecting with firebase storage
 
-// [x] Admin page + two components
-// [ ] Wrapper better styling
-// [ ] sliderView error fix
-// [ ] Gallery page + Slide
-// [ ] Booking page calendar possibility research
+//VALIDATION
+//SLIDER
+//LANDING PAGE TEXT TYPING ANIMATION
+//MODEL BLENDER
+//MENU BAR UI TEST
 
-// [ ] Booking page / budget 150-250 250-350 ... (no required)
-// [ ] scroll moved -> go to page auto
-// [ ] 확인 메일
-// 매일 받을 이메일 주소 /  authentification
-// 3D stl&glb file
-// 상세 페이지 <- 버튼 / slider는 x
-// imprint 주소 빼고 나머지는 그대로 가져오기
-// side bar transparency / opacity 낮추고 필터 더 적용 / font apply & test 2 versions/ hover -> bold
+// Landing page
+// [-]  - environment color
+// [x]  - font
+// [x]  - menu bar opacity change (opacity 낮추고 필터 더 적용 / hover -> bold)
+// [x]  - menu bar click timeout
+// [x]  - footer copyright and so on (imprint 주소 빼고 나머지는 그대로 가져오기)
 
-// deploy->
+// Booking page
+// [x]  - 확인 메일
+// [x]  - submit validation
+// [ ]  - Booking page calendar possibility research
+// [x]  - Booking page / budget 150-250 ... 650-  (required)
+// [x]  - reservation form update
+
+// gallery page & flash page
+// [ ]  - 상세 페이지 Slider <- 버튼 / slider는 x
+// [x]  - wrapper styling adjust
+
+// Admin page
+// [ ]  - simple styling, firebase auth change check
+// 매일 받을 이메일 주소 /  authentication

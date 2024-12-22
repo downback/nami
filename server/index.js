@@ -21,6 +21,7 @@ function sendEmail(
     size,
     date,
     designDetails,
+    budget,
     age,
     medication,
     extraInfo,
@@ -37,25 +38,25 @@ function sendEmail(
     })
 
     const mailOptions = {
-      to: process.env.GMAIL_TO,
+      to: `${process.env.GMAIL_TO}, ${email}`,
       from: email,
-      subject: `Booking Request from ${name}`,
+      subject: `Nami Tattoo Booking Request from ${name}!`,
       html: `
       <h1>NEW TATTOO REQUEST</h1>
-      <hr/>
-      <h2>Personal Info:</h2>
+      <br/>
+      <h4>Personal Info:</h4>
         <p>FULL NAME: ${name}</p>
         <p>PRONOUNS: ${pronouns}</p>
         <p>EMAIL: ${email}</p>
-        <hr/>
-        <h2>Tattoo Design Request:</h2>
+        <br/>
+        <h4>Tattoo Design Request:</h4>
         <p>Design Type: ${designType}</p>
         <p>PLACEMENT & SIZE: ${size}</p>
         <p>DESIRED DATE: ${date}</p>
         <p>DESIGN DETAILS: ${designDetails}</p>
-
-      <hr/>
-      <h2>Additional Info:</h2>
+        <p>Budget: ${budget}€</p>
+      <br/>
+      <h4>Additional Info:</h4>
         <p>18+ YEARS OLD? ${age}</p>
         <p>ANY MEDICATION? ${medication}</p>
         <p>EXTRA INFO / QUESTION: ${extraInfo}</p>

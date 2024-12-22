@@ -1,6 +1,6 @@
 import React from "react"
 import SliderView from "../components/ui/SliderView"
-import Wrapper from "../components/ui/Wrapper"
+import Wrapper from "../components/ui/WhiteWrapper"
 
 const FlashPage = () => {
   return (

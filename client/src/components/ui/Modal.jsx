@@ -1,14 +1,14 @@
 import React from "react"
 import styles from "./Modal.module.css"
 
-const Modal = ({ isVisible, onClose, message, buttonText }) => {
+const Modal = ({ isVisible, onClose, title, message, buttonText }) => {
   if (!isVisible) return null
 
   return (
     <div className={styles.modal}>
       <div className={styles.modalContent}>
-        <h2>Booking Request Sent!</h2>
-        <p>{message}</p>
+        <div className={styles.modalText}>{title}</div>
+        <div>{message}</div>
         <button onClick={onClose} className={styles.modalButton}>
           {buttonText}
         </button>

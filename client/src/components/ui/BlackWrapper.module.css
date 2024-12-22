@@ -1,0 +1,63 @@
+@import "../../styles/variables.css";
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.contentContainer {
+  width: 94vw;
+  height: 90vh;
+  background-color: #fff;
+  border-radius: 8px;
+  background-color: var(--secondary-color);
+  box-shadow: -2px -2px 2rem 1.5rem rgba(20, 20, 19, 1),
+    2px 2px 2rem 1.5rem rgba(20, 20, 19, 1);
+  position: absolute;
+  overflow: scroll;
+}
+
+.backButtonContainer {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.8rem;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.backButton {
+  color: white;
+  font-size: 1em;
+  transition: transform 0.2s;
+}
+
+.backButton:hover {
+  transform: scale(1.1);
+  animation: backButtonAnimation infinite 0.7s;
+}
+
+@keyframes backButtonAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.childrenContainer {
+  padding: 1rem;
+}

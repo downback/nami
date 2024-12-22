@@ -1,5 +1,5 @@
 import React, { useRef } from "react"
-import Navbar from "../components/NavBar"
+import Navbar from "../components/ui/NavBar"
 import Model from "../components/3d/Model"
 import LandingAnimation from "../components/LandingAnimation"
 
@@ -9,6 +9,7 @@ import { useGSAP } from "@gsap/react"
 import { ScrollToPlugin } from "gsap/ScrollToPlugin"
 
 import styles from "./HomePage.module.css"
+import { Link } from "react-router-dom"
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 gsap.registerPlugin(useGSAP)
@@ -35,17 +36,22 @@ const HomePage = () => {
     })
   }, [])
 
-  "body", { "--bg-color": "red" }
-
   return (
     <div className={styles.pageContainer}>
       <div className={styles.backgroundColor} ref={background}></div>
-      <Navbar />
+      <Navbar pageContainer={pageContainer} />
       <div className={styles.modelContainer}>
         <Model />
       </div>
       <LandingAnimation />
-      <div className={styles.footer}>copyright</div>
+      <div className={styles.footerContainer}>
+        <Link to="/privacy-policy" className={styles.footer}>
+          Privacy Policy
+        </Link>
+        <Link to="/imprint" className={styles.footer}>
+          Imprint
+        </Link>
+      </div>
     </div>
   )
 }

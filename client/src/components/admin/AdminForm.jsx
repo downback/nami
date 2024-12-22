@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { storage } from "../services/firebase-config"
+import { storage } from "../../services/firebase-config"
 import {
   getStorage,
   ref,

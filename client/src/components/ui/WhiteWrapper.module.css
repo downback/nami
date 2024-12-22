@@ -1,0 +1,65 @@
+@import "../../styles/variables.css";
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  background-color: var(--secondary-color);
+}
+
+.contentContainer {
+  width: 91vw;
+  height: 88vh;
+  /* padding: 1rem; */
+  background-color: #fff;
+  border-radius: 8px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  */
+  box-shadow: -2px -2px 2rem 1.5rem rgba(255, 255, 255, 1),
+    2px 2px 2rem 1.5rem rgba(255, 255, 255, 0.8);
+  position: absolute;
+  overflow: scroll;
+}
+
+.backButtonContainer {
+  position: fixed;
+  top: 1.8rem;
+  left: 2rem;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: black;
+  cursor: pointer;
+}
+
+.backButton {
+  font-size: 1em;
+  transition: transform 0.2s;
+  color: var(--secondary-color);
+}
+
+.backButton:hover {
+  transform: scale(1);
+  animation: backButtonAnimation infinite 0.7s;
+}
+
+@keyframes backButtonAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.childrenContainer {
+  padding: 1rem;
+}

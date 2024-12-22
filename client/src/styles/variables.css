@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap");
+
 @font-face {
   font-family: "Paperlogy";
   src: url("../assets/fonts/Paperlogy-4Regular.ttf") format(ttf);
@@ -12,17 +14,24 @@
 }
 
 @font-face {
-  font-family: "Refra";
-  src: url("../assets/fonts/Refra.ttf") format(ttf);
-  font-weight: normal; /* Add font-weight property */
-  font-style: normal;
+  font-family: "refra";
+  src: url("../assets/fonts/Refra.ttf") format("ttf");
 }
 
 :root {
   --primary-color: #000;
-  --secondary-color: #333;
+  --secondary-color: #141413;
+  --whiteBg-color: rgba(255, 255, 255, 0.9);
+
+  --primary-font-color: rgba(255, 255, 255, 0.4);
+  --secondary-font-color: rgba(255, 255, 255, 0.7);
+  --heightlight-font-color: rgba(255, 255, 255, 0.9);
+
+  --box-shadow: -2px -2px 1rem 1rem rgba(255, 255, 255, 0.4),
+    2px 2px 1rem 0.2rem rgba(255, 255, 255, 0.3);
 
   --font-family-primary: "Paperlogy", sans-serif;
   --font-family-point: "Anthony", sans-serif;
-  --font-family-refra: "Refra", sans-serif;
+  --font-family-refra: "refra";
+  --font-family-grotesque: "Darker Grotesque", sans-serif;
 }

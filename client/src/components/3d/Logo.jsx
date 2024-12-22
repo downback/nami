@@ -182,44 +182,52 @@ export function Logo(props) {
   }, [scene])
 
   return (
-    <group
-      {...props}
-      dispose={null}
-      ref={logo}
-      position={[0, 0, -2.6]}
-      rotation={[90, 0, 0]}
-    >
-      <mesh
+    <>
+      <directionalLight
         castShadow
-        receiveShadow
-        geometry={nodes.Mesh_1.geometry}
-        material={nodes.Mesh_1.material}
+        position={[-2.38, 1.32, 0.74]}
+        intensity={5}
       />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Mesh_2.geometry}
-        material={nodes.Mesh_2.material}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Mesh_3.geometry}
-        material={nodes.Mesh_3.material}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Mesh_4.geometry}
-        material={nodes.Mesh_4.material}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Mesh_5.geometry}
-        material={nodes.Mesh_5.material}
-      />
-    </group>
+      <ambientLight intensity={0.5} />
+      <group
+        {...props}
+        dispose={null}
+        ref={logo}
+        position={[0, 0, -2.6]}
+        rotation={[90, 0, 0]}
+      >
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_1.geometry}
+          material={nodes.Mesh_1.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_2.geometry}
+          material={nodes.Mesh_2.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_3.geometry}
+          material={nodes.Mesh_3.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_4.geometry}
+          material={nodes.Mesh_4.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_5.geometry}
+          material={nodes.Mesh_5.material}
+        />
+      </group>
+    </>
   )
 }
 

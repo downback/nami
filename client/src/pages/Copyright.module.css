@@ -1,0 +1,31 @@
+@import "../styles/variables.css";
+
+.CopyrightContainer {
+  color: var(--primary-font-color);
+  font-family: var(--font-family-grotesque);
+  margin-top: 20vh;
+}
+
+.ImprintContainer {
+  color: var(--primary-font-color);
+  font-family: var(--font-family-grotesque);
+  margin-top: 20vh;
+  margin-left: 20vw;
+  width: 50vw;
+}
+
+.TitleText {
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin: 0.8rem 0 0.2rem 0;
+}
+
+.LinkText {
+  color: var(--primary-font-color);
+}
+
+.ImprintText {
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin: 0.9rem 0 0.9rem 0;
+}

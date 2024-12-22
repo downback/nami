@@ -1,13 +1,13 @@
 import React from "react"
-import BookingForm from "../components/BookingForm"
-import Wrapper from "../components/ui/Wrapper"
+import BookingForm from "../components/booking/BookingForm"
+import BlackWrapper from "../components/ui/BlackWrapper"
 
 const BookingPage = () => {
   return (
     <div>
-      <Wrapper>
+      <BlackWrapper>
         <BookingForm />
-      </Wrapper>
+      </BlackWrapper>
     </div>
   )
 }

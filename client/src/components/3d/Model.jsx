@@ -32,10 +32,10 @@ const Model = () => {
         enableRotate={false}
         enableZoom={false}
       />
-      <Logo scale={10} />
-      {/* <Suspense fallback={<Loading />}>
-      </Suspense> */}
-      <Environment preset="warehouse" />
+      <Suspense fallback={null}>
+        <Logo scale={10} />
+      </Suspense>
+      <Environment preset="night" />
     </Canvas>
   )
 }

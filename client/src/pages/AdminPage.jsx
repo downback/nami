@@ -21,6 +21,12 @@ const AdminPage = () => {
         >
           Manage Flash
         </button>
+        <button
+          className={styles.button}
+          onClick={() => navigate("/admin/dates")}
+        >
+          Manage Date
+        </button>
       </div>
     </div>
   )
