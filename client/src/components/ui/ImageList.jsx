@@ -1,24 +1,19 @@
 import React, { useEffect, useState } from "react"
 import { getStorage, ref, listAll, getDownloadURL } from "firebase/storage"
-import Slider from "react-slick"
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
+import styles from "./ImageList.module.css"
+import DetailView from "./DetailView"
 
-import styles from "./SliderView.module.css"
-
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa"
-
-const SliderView = ({ folderName }) => {
+const ImageList = ({ folderName, title }) => {
   const [images, setImages] = useState([])
-  const [sliderOpen, setSliderOpen] = useState(false)
-  const [currentIndex, setCurrentIndex] = useState(0)
   const [loading, setLoading] = useState(true)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [sliderOpen, setSliderOpen] = useState(false)
 
   useEffect(() => {
     const fetchImages = async () => {
       try {
         const storage = getStorage()
-        const listRef = ref(storage, folderName) // Folder name passed as a parameter
+        const listRef = ref(storage, folderName)
         const response = await listAll(listRef)
         const urls = await Promise.all(
           response.items.map((item) => getDownloadURL(item))
@@ -39,23 +34,19 @@ const SliderView = ({ folderName }) => {
     setSliderOpen(true)
   }
 
-  const closeSlider = () => setSliderOpen(false)
+  const closeSlider = () => {
+    setSliderOpen(false)
+  }
 
-  const sliderSettings = {
-    initialSlide: currentIndex,
-    beforeChange: (oldIndex, newIndex) => setCurrentIndex(newIndex),
-
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    speed: 100,
-    arrows: true,
-    prevArrow: <FaArrowLeft className={styles.arrow} />,
-    nextArrow: <FaArrowRight className={styles.arrow} />,
+  const handleIndexChange = (newIndex) => {
+    if (newIndex >= 0 && newIndex < images.length) {
+      setCurrentIndex(newIndex)
+    }
   }
 
   return (
     <div className={styles.container}>
+      <div className={styles.title}>{title}</div>
       {loading ? (
         <p className={styles.loading}>Loading images...</p>
       ) : images.length === 0 ? (
@@ -77,27 +68,16 @@ const SliderView = ({ folderName }) => {
           ))}
         </div>
       )}
-
       {sliderOpen && (
-        <div className={styles.sliderOverlay}>
-          <button className={styles.closeButton} onClick={closeSlider}>
-            &times;
-          </button>
-          <Slider {...sliderSettings}>
-            {images.map((image, index) => (
-              <div key={index} className={styles.sliderImageWrapper}>
-                <img
-                  src={image}
-                  alt={`Slider item ${index + 1}`}
-                  className={styles.sliderImage}
-                />
-              </div>
-            ))}
-          </Slider>
-        </div>
+        <DetailView
+          images={images}
+          currentIndex={currentIndex}
+          onClose={closeSlider}
+          onIndexChange={handleIndexChange}
+        />
       )}
     </div>
   )
 }
 
-export default SliderView
+export default ImageList

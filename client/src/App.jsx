@@ -44,11 +44,13 @@ export default App
 
 // TODO
 
-//VALIDATION
-//SLIDER
-//LANDING PAGE TEXT TYPING ANIMATION
-//MODEL BLENDER
-//MENU BAR UI TEST
+//[ ] LANDING PAGE TEXT TYPING ANIMATION
+//[ ] MODEL BLENDER
+//[ ] MENU BAR UI TEST
+//[ ] firebase auth check
+//[ ] mobile responsive design
+//[x] SLIDER
+//[x] VALIDATION
 
 // Landing page
 // [-]  - environment color
@@ -56,13 +58,8 @@ export default App
 // [x]  - menu bar opacity change (opacity 낮추고 필터 더 적용 / hover -> bold)
 // [x]  - menu bar click timeout
 // [x]  - footer copyright and so on (imprint 주소 빼고 나머지는 그대로 가져오기)
-
-// Booking page
-// [x]  - 확인 메일
-// [x]  - submit validation
-// [ ]  - Booking page calendar possibility research
-// [x]  - Booking page / budget 150-250 ... 650-  (required)
-// [x]  - reservation form update
+// [ ]  - typing animation
+// [ ]  - privacy policy width change
 
 // gallery page & flash page
 // [ ]  - 상세 페이지 Slider <- 버튼 / slider는 x
@@ -71,3 +68,10 @@ export default App
 // Admin page
 // [ ]  - simple styling, firebase auth change check
 // 매일 받을 이메일 주소 /  authentication
+
+// Booking page
+// [x]  - 확인 메일
+// [x]  - submit validation
+// [x]  - Booking page calendar possibility research
+// [x]  - Booking page / budget 150-250 ... 650-  (required)
+// [x]  - reservation form update
