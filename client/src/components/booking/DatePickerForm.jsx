@@ -23,7 +23,7 @@ function DatePickerForm({ selectedDate, setFieldValue }) {
           }
         })
         setAvailableDates(dates)
-        console.log("Fetched available dates:", dates)
+        // console.log("Fetched available dates:", dates)
       } catch (error) {
         console.error("Error fetching available dates:", error)
       }

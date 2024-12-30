@@ -61,7 +61,7 @@ const Navbar = ({ pageContainer }) => {
           onComplete: () => {
             setTimeout(() => {
               navigate(`/${link.id}`)
-            }, 2000)
+            }, 1200)
           },
         })
       })

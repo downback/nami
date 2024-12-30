@@ -4,6 +4,7 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useGSAP } from "@gsap/react"
 import { ScrollToPlugin } from "gsap/ScrollToPlugin"
+import SplitType from "split-type"
 
 import styles from "./LandingAnimation.module.css"
 
@@ -15,19 +16,46 @@ function LandingAnimation() {
   const landingSection2 = useRef()
   const landingSection3 = useRef()
   const landingSection4 = useRef()
+  const textAnimations = useRef([])
 
   useGSAP(
     () => {
+      textAnimations.current.forEach((target) => {
+        const sectionId = target ? target.getAttribute("data-target") : null
+        if (sectionId === null) {
+          console.error(
+            "Target element is null or does not have the 'data-target' attribute."
+          )
+        }
+        const targetSection = document.querySelector(`#${sectionId}`)
+
+        if (targetSection) {
+          const splitInstance = new SplitType(target, { types: "chars" })
+          const chars = splitInstance.chars
+
+          gsap.from(chars, {
+            yPercent: 100,
+            duration: 0.5,
+            ease: "power2.out",
+            stagger: 0.05,
+            scrollTrigger: {
+              trigger: targetSection,
+              start: "top 100",
+              end: "+=100%",
+              pin: true,
+              anticipatePin: 1,
+              toggleActions: "play none reverse none",
+              markers: false,
+            },
+          })
+        }
+      })
+
       gsap.to(landingSection2.current, {
         scrollTrigger: {
           trigger: "#landing_section-2",
           start: "top top",
           end: "+=100%",
-          scrub: true,
-          pin: true,
-          anticipatePin: 1,
-          markers: false,
-          id: "textPin1",
         },
       })
 
@@ -36,11 +64,6 @@ function LandingAnimation() {
           trigger: "#landing_section-3",
           start: "top top",
           end: "+=100%",
-          scrub: true,
-          pin: true,
-          anticipatePin: 1,
-          markers: false,
-          id: "textPin2",
         },
       })
 
@@ -49,11 +72,6 @@ function LandingAnimation() {
           trigger: "#landing_section-4",
           start: "top top",
           end: "+=100%",
-          scrub: true,
-          pin: true,
-          anticipatePin: 1,
-          markers: false,
-          id: "textPin3",
         },
       })
     },
@@ -72,9 +90,14 @@ function LandingAnimation() {
         className={styles.landingSection}
         ref={landingSection2}
       >
-        <div className={`${styles.landingContents} ${styles.flashSection}`}>
+        <div className={`${styles.landingContents} ${styles.flashContent}`}>
           <Link to="/flash" className={styles.contentsText}>
-            Flash
+            <div
+              ref={(el) => (textAnimations.current[0] = el)}
+              data-target="landing_section-2"
+            >
+              Flash ... go to see flashes
+            </div>
           </Link>
         </div>
       </section>
@@ -83,9 +106,14 @@ function LandingAnimation() {
         className={styles.landingSection}
         ref={landingSection3}
       >
-        <div className={`${styles.landingContents} ${styles.bookingSection}`}>
+        <div className={`${styles.landingContents} ${styles.bookingContent}`}>
           <Link to="/booking" className={styles.contentsText}>
-            Booking
+            <div
+              ref={(el) => (textAnimations.current[1] = el)}
+              data-target="landing_section-3"
+            >
+              Booking ... go to book an appointment
+            </div>
           </Link>
         </div>
       </section>
@@ -94,9 +122,14 @@ function LandingAnimation() {
         className={styles.landingSection}
         ref={landingSection4}
       >
-        <div className={`${styles.landingContents} ${styles.gallerySection}`}>
+        <div className={`${styles.landingContents} ${styles.galleryContent}`}>
           <Link to="/gallery" className={styles.contentsText}>
-            Gallery
+            <div
+              ref={(el) => (textAnimations.current[2] = el)}
+              data-target="landing_section-4"
+            >
+              Gallery ... check out my graphic designs
+            </div>
           </Link>
         </div>
       </section>

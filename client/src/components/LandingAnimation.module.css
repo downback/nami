@@ -8,14 +8,27 @@
   width: 100%;
   height: 100vh;
   position: relative;
+  font-size: 1.2rem;
 }
 
 .landingContents {
   position: absolute;
+}
+
+.flashContent {
+  top: 30%;
+  left: 55%;
+}
+
+.bookingContent {
+  top: 15%;
+  left: 20%;
+}
+
+.galleryContent {
   top: 50%;
-  margin-left: 3rem;
-  transform: translateY(-50%);
-  color: black;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .contentsText {

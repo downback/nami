@@ -3,7 +3,8 @@
 .CopyrightContainer {
   color: var(--primary-font-color);
   font-family: var(--font-family-grotesque);
-  margin-top: 20vh;
+  width: 60vw;
+  margin: 20vh auto 0 auto;
 }
 
 .ImprintContainer {
@@ -22,6 +23,12 @@
 
 .LinkText {
   color: var(--primary-font-color);
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.LinkText:hover {
+  color: var(--secondary-font-color);
 }
 
 .ImprintText {

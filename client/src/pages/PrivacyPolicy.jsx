@@ -7,6 +7,7 @@ function PrivacyPolicy() {
     <BlackWrapper>
       <div className={styles.CopyrightContainer}>
         <h4 className={styles.TitleText}>Privacy Policy</h4>
+        <br />
         <p>
           We are very delighted that you have shown interest in our enterprise.
           Data protection is of a particularly high priority for the management
@@ -18,7 +19,6 @@ function PrivacyPolicy() {
           we generally obtain consent from the data subject.
         </p>
         <p>
-          {" "}
           The processing of personal data, such as the name, address, e-mail
           address, or telephone number of a data subject shall always be in line
           with the General Data Protection Regulation &#40;GDPR&#41;, and in
@@ -36,8 +36,9 @@ function PrivacyPolicy() {
           data transmissions may in principle have security gaps, so absolute
           protection may not be guaranteed. For this reason, every data subject
           is free to transfer personal data to us via alternative means, e.g. by
-          telephone.{" "}
+          telephone.
         </p>
+        <br />
         <h4 className={styles.TitleText}>1. Definitions</h4>
         <p>
           The data protection declaration of Henam Shin is based on the terms
@@ -173,6 +174,7 @@ function PrivacyPolicy() {
             </p>
           </li>
         </ul>
+        <br />
         <h4 className={styles.TitleText}>
           2. Name and Address of the controller
         </h4>
@@ -189,6 +191,7 @@ function PrivacyPolicy() {
         <p>Phone: +49 1788236330</p>
         <p>Email: namnami.tt@gmail.com</p>
         <p>Website: https://nami-xi.vercel.app</p>
+        <br />
         <h4 className={styles.TitleText}>
           3. Collection of general data and information
         </h4>
@@ -222,6 +225,7 @@ function PrivacyPolicy() {
           are stored separately from all personal data provided by a data
           subject.
         </p>
+        <br />
         <h4 className={styles.TitleText}>
           4. Contact possibility via the website{" "}
         </h4>
@@ -237,6 +241,7 @@ function PrivacyPolicy() {
           contacting the data subject. There is no transfer of this personal
           data to third parties.
         </p>
+        <br />
         <h4 className={styles.TitleText}>
           5. Routine erasure and blocking of personal data
         </h4>
@@ -253,6 +258,7 @@ function PrivacyPolicy() {
           expires, the personal data are routinely blocked or erased in
           accordance with legal requirements.
         </p>
+        <br />
         <h4 className={styles.TitleText}>6. Rights of the data subject</h4>
         <ul>
           <li>
@@ -568,6 +574,7 @@ function PrivacyPolicy() {
             </p>
           </li>
         </ul>
+        <br />
         <h4 className={styles.TitleText}>
           7. Data protection provisions about the application and use of
           Instagram
@@ -621,6 +628,7 @@ function PrivacyPolicy() {
           https://help.instagram.com/155833707900388 and
           https://www.instagram.com/about/legal/privacy/.
         </p>
+        <br />
         <h4 className={styles.TitleText}>8. Legal basis for the processing </h4>
         <p>
           Art. 6&#40;1&#41; lit. a GDPR serves as the legal basis for processing
@@ -654,6 +662,7 @@ function PrivacyPolicy() {
           that a legitimate interest could be assumed if the data subject is a
           client of the controller &#40;Recital 47 Sentence 2 GDPR&#41;.
         </p>
+        <br />
         <h4 className={styles.TitleText}>
           9. The legitimate interests pursued by the controller or by a third
           party
@@ -663,6 +672,7 @@ function PrivacyPolicy() {
           lit. f GDPR our legitimate interest is to carry out our business in
           favor of the well-being of all our employees and the shareholders.
         </p>
+        <br />
         <h4 className={styles.TitleText}>
           10. Period for which the personal data will be stored
         </h4>
@@ -673,6 +683,7 @@ function PrivacyPolicy() {
           no longer necessary for the fulfillment of the contract or the
           initiation of a contract.
         </p>
+        <br />
         <h4 className={styles.TitleText}>
           11. Provision of personal data as statutory or contractual
           requirement; Requirement necessary to enter into a contract;
@@ -696,6 +707,7 @@ function PrivacyPolicy() {
           there is an obligation to provide the personal data and the
           consequences of non-provision of the personal data.
         </p>
+        <br />
         <h4 className={styles.TitleText}>
           12. Existence of automated decision-making
         </h4>

@@ -44,32 +44,36 @@ export default App
 
 // TODO
 
-//[ ] LANDING PAGE TEXT TYPING ANIMATION
 //[ ] MODEL BLENDER
 //[ ] MENU BAR UI TEST
 //[ ] firebase auth check
-//[ ] mobile responsive design
+//[x] LANDING PAGE TEXT TYPING ANIMATION
 //[x] SLIDER
 //[x] VALIDATION
 
+// Admin page
+// [ ]  - styling
+// [ ]  - mobile responsive design
+// [ ]  - firebase auth change check
+// 매일 받을 이메일 주소 /  authentication
+
 // Landing page
+// [ ]  -  mobile responsive design
 // [-]  - environment color
 // [x]  - font
 // [x]  - menu bar opacity change (opacity 낮추고 필터 더 적용 / hover -> bold)
 // [x]  - menu bar click timeout
 // [x]  - footer copyright and so on (imprint 주소 빼고 나머지는 그대로 가져오기)
-// [ ]  - typing animation
-// [ ]  - privacy policy width change
+// [x]  - typing animation
+// [x]  - privacy policy width change
 
 // gallery page & flash page
-// [ ]  - 상세 페이지 Slider <- 버튼 / slider는 x
+// [ ]  - mobile responsive design
+// [x]  - 상세 페이지 Slider <- 버튼 / slider는 x
 // [x]  - wrapper styling adjust
 
-// Admin page
-// [ ]  - simple styling, firebase auth change check
-// 매일 받을 이메일 주소 /  authentication
-
 // Booking page
+// [ ]  - mobile responsive design
 // [x]  - 확인 메일
 // [x]  - submit validation
 // [x]  - Booking page calendar possibility research
