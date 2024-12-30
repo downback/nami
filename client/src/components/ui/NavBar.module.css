@@ -57,10 +57,29 @@
 
 @media (max-width: 768px) {
   .navbar {
-    margin: 2rem 3rem;
+    margin: 1.5rem 1rem;
   }
+
   .navLinks {
+    width: 70vw;
+    padding: 1rem 0.7rem 0 0.7rem;
+    font-size: 0.9rem;
+    border-radius: 1.3rem;
+  }
+
+  .navLinks.isActive {
     width: 100%;
-    padding: 0.7rem;
+    /* padding: 0.7rem; */
+    flex-direction: column;
+    align-items: flex-end;
+    width: 3rem;
+    padding: 1rem 0.7rem 0 0.7rem;
+    font-size: 0.9rem;
+    border-radius: 1.3rem;
+  }
+
+  .navLinks .navItem {
+    display: block;
+    padding-bottom: 1rem;
   }
 }

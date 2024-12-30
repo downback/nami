@@ -86,9 +86,12 @@
   outline: none;
   transition: border-color 0.3s ease-in-out;
   align-self: center;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1rem;
 }
 
 .input:focus {
+  color: black;
   border-bottom: 2px solid #ccc;
 }
 
@@ -103,6 +106,7 @@
   outline: none;
   transition: border-color 0.3s ease-in-out;
   align-self: flex-start;
+  font-size: 0.9rem;
 }
 
 .textarea:focus {
@@ -136,18 +140,18 @@
 }
 
 .button:hover {
-  animation: backButtonAnimation infinite 0.7s;
+  animation: backButtonAnimation infinite 0.7s ease;
 }
 
 @keyframes backButtonAnimation {
   0% {
-    padding: 0.5rem 2rem;
+    transform: scale(1);
   }
   50% {
-    padding: 0.6rem 2.1rem;
+    transform: scale(1.02);
   }
   100% {
-    padding: 0.5rem 2rem;
+    transform: scale(1);
   }
 }
 
@@ -214,5 +218,27 @@
   }
   100% {
     opacity: 0;
+  }
+}
+
+.modalCloseButton {
+  color: black;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .modalCloseButton {
+  }
+  .required {
+    align-self: flex-start;
+    margin-left: 1rem;
+    color: var(--secondary-font-color);
+  }
+  .submitError {
+    margin-left: 1rem;
+    font-size: 0.9rem;
   }
 }

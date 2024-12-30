@@ -16,10 +16,8 @@
 .contentContainer {
   width: 91vw;
   height: 88vh;
-  /* padding: 1rem; */
   background-color: #fff;
   border-radius: 8px;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  */
   box-shadow: -2px -2px 2rem 1.5rem rgba(255, 255, 255, 1),
     2px 2px 2rem 1.5rem rgba(255, 255, 255, 0.8);
   position: absolute;
@@ -62,4 +60,13 @@
 
 .childrenContainer {
   padding: 1rem;
+}
+
+@media (max-width: 768px) {
+  .contentContainer {
+    width: 75vw;
+  }
+  .childrenContainer {
+    padding: 0;
+  }
 }

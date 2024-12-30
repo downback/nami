@@ -19,11 +19,12 @@
   justify-content: space-between;
   align-items: center;
   background: white;
-  padding: 1.5rem 1rem;
+  padding: 2rem 1.5rem 1.8rem 1.5rem;
   border-radius: 8px;
   text-align: center;
-  width: 45vw;
-  height: 5rem;
+  width: 35vw;
+  min-width: 20rem;
+  height: auto;
   box-shadow: -2px -2px 1rem 0.2rem rgba(255, 255, 255, 0.8),
     2px 2px 1rem 0.2rem rgba(255, 255, 255, 0.8);
   font-family: var(--font-family-grotesque);
@@ -42,7 +43,18 @@
   margin-top: 1rem;
 }
 
-/* .modalButton:hover {
-  background-color: var(--secondary-color);
-  color: var(--secondary-font-color);
-} */
+@media (max-width: 768px) {
+  .modalContent {
+    padding: 1.5rem 1rem 1.2rem 1rem;
+    height: auto;
+    width: 75vw;
+    min-width: 12rem;
+  }
+  .modalText {
+    width: 60%;
+  }
+  .modalMessage {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+}

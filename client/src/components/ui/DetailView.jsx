@@ -106,6 +106,22 @@ const DetailView = ({ images, currentIndex, onClose, onIndexChange }) => {
       >
         <IoIosArrowRoundForward />
       </button>
+      <button
+        className={`${styles.mobileButton} ${styles.arrowUpMobile} ${
+          currentIndex <= 0 ? styles.disabled : ""
+        }`}
+        onClick={handlePrev}
+      >
+        <IoIosArrowRoundUp />
+      </button>
+      <button
+        className={` ${styles.mobileButton} ${styles.arrowDownMobile} ${
+          currentIndex >= images.length - 1 ? styles.disabled : ""
+        }`}
+        onClick={handleNext}
+      >
+        <IoIosArrowRoundDown />
+      </button>
 
       <div className={styles.sliderContainer}>
         <div className={styles.imageCardContainer}>

@@ -5,13 +5,13 @@
   font-family: var(--font-family-grotesque);
   width: 60vw;
   margin: 20vh auto 0 auto;
+  text-align: justify;
 }
 
 .ImprintContainer {
   color: var(--primary-font-color);
   font-family: var(--font-family-grotesque);
-  margin-top: 20vh;
-  margin-left: 20vw;
+  margin: 20vh auto 0 auto;
   width: 50vw;
 }
 
@@ -35,4 +35,13 @@
   font-size: 1.1rem;
   font-weight: 300;
   margin: 0.9rem 0 0.9rem 0;
+}
+
+@media (max-width: 768px) {
+  .CopyrightContainer {
+    width: 65vw;
+  }
+  .ImprintContainer {
+    width: 65vw;
+  }
 }

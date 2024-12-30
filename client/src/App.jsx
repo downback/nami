@@ -28,11 +28,11 @@ function App() {
         <Route path="/imprint" element={<Imprint />} />
         <Route
           path="/admin/gallery"
-          element={<AdminForm folderName="gallery" title="Manage Gallery" />}
+          element={<AdminForm folderName="gallery" title="Gallery Page" />}
         />
         <Route
           path="/admin/flash"
-          element={<AdminForm folderName="flash" title="Manage Flash" />}
+          element={<AdminForm folderName="flash" title="Flash Page" />}
         />
         <Route path="/admin/dates" element={<AdminDateUpdate />} />
       </Routes>
@@ -46,20 +46,22 @@ export default App
 
 //[ ] MODEL BLENDER
 //[ ] MENU BAR UI TEST
-//[ ] firebase auth check
+//[ ] Loader styling
+//[x] firebase auth check
 //[x] LANDING PAGE TEXT TYPING ANIMATION
 //[x] SLIDER
 //[x] VALIDATION
 
 // Admin page
-// [ ]  - styling
-// [ ]  - mobile responsive design
-// [ ]  - firebase auth change check
+// [x]  - firebase auth change check
+// [x]  - styling
+// [x]  - mobile responsive design
 // 매일 받을 이메일 주소 /  authentication
 
 // Landing page
-// [ ]  -  mobile responsive design
 // [-]  - environment color
+// [x]  -  3d model loading animation
+// [x]  -  mobile responsive design
 // [x]  - font
 // [x]  - menu bar opacity change (opacity 낮추고 필터 더 적용 / hover -> bold)
 // [x]  - menu bar click timeout

@@ -52,6 +52,14 @@
   transition: all 0.3s ease;
 }
 
+.arrowUpMobile {
+  display: none;
+}
+
+.arrowDownMobile {
+  display: none;
+}
+
 .arrowButtonBack:hover,
 .arrowButtonForward:hover {
   font-size: 2.7rem;
@@ -73,10 +81,11 @@
 
 .imageCardContainer {
   position: absolute;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  width: 60%;
-  height: 100%;
+  transform: translate(-50%, -50%);
+  width: 20rem;
+  height: 20rem;
   transition: transform 0.5s ease-in-out;
   box-shadow: var(--box-shadow);
 }
@@ -195,6 +204,72 @@
 }
 
 @media (max-width: 768px) {
-  .detailContainer {
+  .imageCardContainer {
+    width: 15rem;
+    height: 15rem;
+  }
+
+  .arrowButtonBack {
+    display: none;
+  }
+
+  .arrowButtonForward {
+    display: none;
+  }
+
+  .arrowUpMobile {
+    position: fixed;
+    left: 50%;
+    top: 3rem;
+    transform: translateX(-50%);
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    z-index: 40;
+    transition: all 0.3s ease;
+    display: block;
+  }
+
+  .arrowDownMobile {
+    position: fixed;
+    left: 50%;
+    bottom: 3rem;
+    transform: translateX(-50%);
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    z-index: 40;
+    transition: all 0.3s ease;
+    display: block;
+  }
+
+  .sliderImageWrapper:nth-child(1) {
+    transform: perspective(35em) rotateX(-18deg) translateY(-200px) scale(0.6);
+    filter: blur(0.3rem) brightness(0.8);
+  }
+
+  .sliderImageWrapper:nth-child(2) {
+    transform: perspective(35em) rotateX(-18deg) translateY(-100px) scale(0.7);
+    filter: blur(0.2rem) brightness(0.9);
+  }
+
+  .sliderImageWrapper:nth-child(4) {
+    transform: perspective(35em) rotateX(18deg) translateY(100px) scale(0.7);
+    filter: blur(0.2rem) brightness(0.9);
+  }
+
+  .sliderImageWrapper:nth-child(5) {
+    transform: perspective(35em) rotateX(18deg) translateY(200px) scale(0.6);
+    filter: blur(0.3rem) brightness(0.8);
+  }
+
+  .sliderImageWrapper:nth-child(4).next {
+    animation: none;
+  }
+
+  .sliderImageWrapper:nth-child(2).prev {
+    animation: none;
   }
 }

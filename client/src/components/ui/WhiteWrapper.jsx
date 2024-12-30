@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import styles from "./WhiteWrapper.module.css"
 import { IoArrowBackOutline } from "react-icons/io5"
 
-const WhiteWrapper = ({ children }) => {
+const WhiteWrapper = ({ children, to = "/" }) => {
   const navigate = useNavigate()
 
   return (
@@ -11,7 +11,7 @@ const WhiteWrapper = ({ children }) => {
       <div className={styles.contentContainer}>
         <div
           className={styles.backButtonContainer}
-          onClick={() => navigate("/")}
+          onClick={() => navigate(to)}
         >
           <IoArrowBackOutline className={styles.backButton} />
         </div>

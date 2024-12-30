@@ -1,90 +1,169 @@
+@import "../../styles/variables.css";
+
 .container {
-  padding: 20px;
-  font-family: Arial, sans-serif;
+  font-family: var(--font-family-grotesque);
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
+.title {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.titleStrong {
+  font-weight: 600;
+  font-size: 2.3rem;
+  margin: 0 0.6rem;
+}
+
+.sectionTitle {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  color: #333;
 }
 
 .addDateSection {
-  margin-bottom: 30px;
-  text-align: center;
+  margin-bottom: 3rem;
+  border: 2px dashed #ddd;
+  padding: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .input {
-  margin-right: 10px;
-  padding: 5px;
+  margin-bottom: 1rem;
+  padding: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-size: 0.8rem;
 }
 
 .addButton {
-  padding: 5px 10px;
-  background-color: #28a745;
-  color: white;
-  border: none;
+  padding: 1rem 3rem;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  box-shadow: 0 0 0.5rem 0.1rem rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+  font-size: 1rem;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .addButton:hover {
-  background-color: #218838;
+  background-color: black;
+  color: white;
 }
 
 .manageDatesSection {
-  margin-top: 20px;
+  margin-bottom: 5rem;
+  border: 2px dashed #ddd;
+  padding: 2.5rem 1rem;
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
+  gap: 1rem;
   text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .gridHeader {
   font-weight: bold;
   background-color: #f4f4f4;
-  padding: 10px;
+  padding: 1rem;
   border: 1px solid #ddd;
 }
 
 .gridItem {
-  padding: 10px;
+  padding: 1rem;
   border: 1px solid #ddd;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
 }
 
 .toggleButton {
-  padding: 5px 10px;
-  background-color: #007bff;
+  background-color: rgba(0, 0, 0, 0.4);
   color: white;
   border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
   border-radius: 4px;
   cursor: pointer;
-  margin-right: 5px;
+  transition: background-color 0.3s ease;
 }
 
 .toggleButton:hover {
-  background-color: #0056b3;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: black;
 }
 
 .deleteButton {
-  padding: 5px 10px;
-  background-color: #dc3545;
+  background-color: black;
   color: white;
   border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .deleteButton:hover {
-  background-color: #c82333;
+  background-color: darkred;
 }
 
 .noDatesMessage {
   text-align: center;
   color: #666;
-  font-style: italic;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0;
+  }
+  .grid {
+    gap: 8px;
+  }
+  .gridItem {
+    flex-direction: column;
+  }
+  .manageDatesSection {
+    padding: 2.5rem 0.5rem;
+  }
+  .gridHeader {
+    padding: 0.5rem;
+  }
+
+  .gridItem {
+    padding: 0.5rem;
+  }
+
+  .toggleButton {
+    padding: 0.3rem 0.5rem;
+  }
+
+  .deleteButton {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.9rem;
+  }
 }

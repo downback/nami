@@ -281,7 +281,7 @@ function BookingForm() {
           loading ? (
             "Submitting your booking, please wait..."
           ) : (
-            <p>Your booking request is sent to NAMI!</p>
+            <p>Your booking request has been sent to NAMI!</p>
           )
         }
         message={
@@ -298,7 +298,11 @@ function BookingForm() {
             </p>
           )
         }
-        buttonText={<IoCloseOutline />}
+        buttonText={
+          <button onClick={closeModal} className={styles.modalCloseButton}>
+            <IoCloseOutline />
+          </button>
+        }
       />
     </div>
   )

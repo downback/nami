@@ -61,3 +61,17 @@
 .childrenContainer {
   padding: 1rem;
 }
+
+@media (max-width: 768px) {
+  .contentContainer {
+    width: 85vw;
+    height: 92vh;
+  }
+  .childrenContainer {
+    padding: 0;
+  }
+  .backButtonContainer {
+    top: 2rem;
+    left: 1.7rem;
+  }
+}

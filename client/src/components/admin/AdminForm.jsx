@@ -9,7 +9,7 @@ import {
   deleteObject,
 } from "firebase/storage"
 import styles from "./AdminForm.module.css"
-import { Link } from "react-router-dom"
+import WhiteWrapper from "../ui/WhiteWrapper"
 
 const AdminForm = ({ folderName, title }) => {
   const [images, setImages] = useState([])
@@ -49,7 +49,7 @@ const AdminForm = ({ folderName, title }) => {
       await uploadBytes(storageRef, file)
       alert("Image uploaded successfully!")
       setFile(null)
-      window.location.reload() // Refresh to show new image
+      window.location.reload()
     } catch (error) {
       alert("Error uploading image: ", error.message)
     } finally {
@@ -57,7 +57,6 @@ const AdminForm = ({ folderName, title }) => {
     }
   }
 
-  // Delete an image
   const deleteImage = async (imageUrl) => {
     const storage = getStorage()
     const imageName = imageUrl.split("%2F")[1].split("?")[0]
@@ -75,53 +74,56 @@ const AdminForm = ({ folderName, title }) => {
   }
 
   return (
-    <div className={styles.container}>
-      <Link to="/admin" className={styles.backButton}>
-        <button>Go Back to Admin Page</button>
-      </Link>
-      <h1>{title}</h1>
+    <WhiteWrapper to="/admin">
+      <div className={styles.container}>
+        <div className={styles.title}>
+          MANAGE
+          <span className={styles.titleStrong}>{title}</span>
+          IMAGES
+        </div>
 
-      <div className={styles.uploadSection}>
-        <h2>Upload Image</h2>
-        <input
-          type="file"
-          onChange={handleFileChange}
-          className={styles.fileInput}
-        />
-        <button
-          onClick={uploadImage}
-          disabled={loading}
-          className={styles.button}
-        >
-          {loading ? "Uploading..." : "Upload"}
-        </button>
-      </div>
+        <div className={styles.uploadSection}>
+          <h2 className={styles.sectionTitle}>Upload New Image Here!</h2>
+          <input
+            type="file"
+            onChange={handleFileChange}
+            className={styles.fileInput}
+          />
+          <button
+            onClick={uploadImage}
+            disabled={loading}
+            className={styles.button}
+          >
+            {loading ? "Uploading..." : "Upload"}
+          </button>
+        </div>
 
-      <div className={styles.gallery}>
-        <h2>{title} IMAGES</h2>
-        {images.length === 0 ? (
-          <p>No images found.</p>
-        ) : (
-          <div className={styles.imageGrid}>
-            {images.map((image, index) => (
-              <div key={index} className={styles.imageWrapper}>
-                <img
-                  src={image}
-                  alt={`flash item ${index + 1}`}
-                  className={styles.image}
-                />
-                <button
-                  onClick={() => deleteImage(image)}
-                  className={styles.deleteButton}
-                >
-                  Delete
-                </button>
-              </div>
-            ))}
-          </div>
-        )}
+        <div className={styles.gallery}>
+          <h2 className={styles.sectionTitle}>Here Are Uploaded Images!</h2>
+          {images.length === 0 ? (
+            <p>No images found.</p>
+          ) : (
+            <div className={styles.imageGrid}>
+              {images.map((image, index) => (
+                <div key={index} className={styles.imageWrapper}>
+                  <img
+                    src={image}
+                    alt={`flash item ${index + 1}`}
+                    className={styles.image}
+                  />
+                  <button
+                    onClick={() => deleteImage(image)}
+                    className={styles.deleteButton}
+                  >
+                    Delete
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </WhiteWrapper>
   )
 }
 

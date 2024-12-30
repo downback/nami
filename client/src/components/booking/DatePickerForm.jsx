@@ -9,7 +9,6 @@ import moment from "moment-timezone"
 function DatePickerForm({ selectedDate, setFieldValue }) {
   const [availableDates, setAvailableDates] = useState([])
 
-  // Fetch available dates from Firestore
   useEffect(() => {
     const fetchDates = async () => {
       try {

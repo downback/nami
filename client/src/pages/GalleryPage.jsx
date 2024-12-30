@@ -1,12 +1,12 @@
 import React from "react"
-import Wrapper from "../components/ui/WhiteWrapper"
+import WhiteWrapper from "../components/ui/WhiteWrapper"
 import SliderView from "../components/ui/ImageList"
 
 const GalleryPage = () => {
   return (
-    <Wrapper>
+    <WhiteWrapper to="/">
       <SliderView folderName="gallery/" title="Gallery" />
-    </Wrapper>
+    </WhiteWrapper>
   )
 }
 

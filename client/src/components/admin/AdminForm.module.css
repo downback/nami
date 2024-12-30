@@ -1,51 +1,67 @@
+@import "../../styles/variables.css";
+
 .container {
-  max-width: 800px;
+  font-family: var(--font-family-grotesque);
   margin: 0 auto;
-  padding: 20px;
+  padding: 1rem;
   text-align: center;
 }
 
-h1 {
-  margin-bottom: 20px;
+.title {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+.titleStrong {
+  font-weight: 600;
+  font-size: 2.3rem;
+  margin: 0 0.6rem;
+}
+
+.sectionTitle {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
   color: #333;
 }
 
 .uploadSection {
-  margin-bottom: 30px;
+  margin-bottom: 3rem;
+  border: 2px dashed #ddd;
+  padding: 2.5rem 0;
 }
 
 .fileInput {
   display: block;
-  margin: 0 auto 15px;
+  margin: 1rem auto;
+  transform: translateX(2rem);
 }
 
 .button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
+  padding: 1rem 3rem;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  box-shadow: 0 0 0.5rem 0.1rem rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.button:disabled {
-  background-color: #999;
-}
-
-.button:hover:not(:disabled) {
-  background-color: #0056b3;
+.button:hover {
+  background-color: black;
+  color: white;
 }
 
 .gallery {
-  margin-top: 30px;
+  border: 2px dashed #ddd;
+  padding: 2.5rem 1rem;
 }
 
 .imageGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: 1.5rem;
 }
 
 .imageWrapper {
@@ -56,19 +72,19 @@ h1 {
   width: 100%;
   height: auto;
   display: block;
-  border: 2px solid #ddd;
+  border: 1px solid #ddd;
   border-radius: 8px;
 }
 
 .deleteButton {
   position: absolute;
-  top: 5px;
-  right: 5px;
-  background-color: red;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: black;
   color: white;
   border: none;
-  padding: 5px 10px;
-  font-size: 14px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -76,4 +92,17 @@ h1 {
 
 .deleteButton:hover {
   background-color: darkred;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0;
+  }
+  .gridItem {
+    flex-direction: column;
+  }
+  .deleteButton {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.9rem;
+  }
 }

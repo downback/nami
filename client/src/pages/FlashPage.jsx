@@ -1,13 +1,13 @@
 import React from "react"
 import SliderView from "../components/ui/ImageList"
-import Wrapper from "../components/ui/WhiteWrapper"
+import WhiteWrapper from "../components/ui/WhiteWrapper"
 
 const FlashPage = () => {
   return (
     <div>
-      <Wrapper>
+      <WhiteWrapper to="/">
         <SliderView folderName="flash/" title="Flashes" />
-      </Wrapper>
+      </WhiteWrapper>
     </div>
   )
 }
