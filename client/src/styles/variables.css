@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: "refra";
-  src: url("/Refra.ttf") format("ttf");
+  src: url("/fonts/Refra.ttf") format("ttf");
 }
 
 :root {
@@ -17,6 +17,6 @@
   --box-shadow: -2px -2px 1rem 1rem rgba(255, 255, 255, 0.4),
     2px 2px 1rem 0.2rem rgba(255, 255, 255, 0.3);
 
-  --font-family-refra: "refra", sans-serif !important;
+  --font-family-refra: "refra";
   --font-family-grotesque: "Darker Grotesque", sans-serif;
 }

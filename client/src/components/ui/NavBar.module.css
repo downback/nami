@@ -5,7 +5,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  font-family: var(--font-family-refra);
+  font-family: var(--font-family-refra), sans-serif !important;
   z-index: 10;
   margin: 2.5rem 2rem;
 }
