@@ -15,7 +15,7 @@
 
 @font-face {
   font-family: "refra";
-  src: url("../assets/fonts/Refra.ttf") format("ttf");
+  src: url("../../public/Refra.ttf") format("ttf");
 }
 
 :root {
