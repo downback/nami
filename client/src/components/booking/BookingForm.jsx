@@ -28,34 +28,54 @@ function BookingForm() {
   const [loading, setLoading] = useState(false)
 
   const sendMail = async (values, { resetForm }) => {
-    const normalizedValues = Object.fromEntries(
-      Object.entries(values).map(([key, value]) => [key, value || "x"])
-    )
+    // const normalizedValues = Object.fromEntries(
+    //   Object.entries(values).map(([key, value]) => [key, value || "x"])
+    // )
 
-    const formData = new FormData()
+    // const formData = new FormData()
 
-    Object.keys(normalizedValues).forEach((key) => {
-      formData.append(key, normalizedValues[key])
-    })
+    // Object.keys(normalizedValues).forEach((key) => {
+    //   formData.append(key, normalizedValues[key])
+    // })
 
-    const fileInput = document.querySelector("#referenceImage")
-    if (fileInput?.files[0]) {
-      formData.append("referenceImage", fileInput.files[0])
-    }
+    // const fileInput = document.querySelector("#referenceImage")
+    // if (fileInput?.files[0]) {
+    //   formData.append("referenceImage", fileInput.files[0])
+    // }
 
-    for (let [key, value] of formData.entries()) {
-      console.log(key, value)
-    }
+    // for (let [key, value] of formData.entries()) {
+    //   console.log(key, value)
+    // }
 
     try {
       setLoading(true)
       setModalVisible(true)
       setErrorVisible(false)
-      await axios.post("http://localhost:5000/send", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+      const apiUrl = `${import.meta.env.VITE_API_URL}/send`
+
+      const formData = new FormData()
+
+      Object.keys(values).forEach((key) => {
+        formData.append(key, values[key])
       })
+
+      if (values.referenceImage) {
+        formData.append("referenceImage", values.referenceImage)
+      }
+
+      await axios.post(apiUrl, formData)
+
+      // const data = {
+      //   name: "Test Name",
+      //   email: "test@example.com",
+      //   message: "without files",
+      // }
+
+      // await axios.post(apiUrl, data, {
+      //   headers: { "Content-Type": "application/json" },
+      // })
+
+      // await axios.post(apiUrl, formData)
       console.log("Email sent successfully")
       resetForm()
     } catch (error) {

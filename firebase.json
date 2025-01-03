@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist",
+    "public": "client/dist",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "headers": [
       {
@@ -19,5 +19,8 @@
         "destination": "/index.html"
       }
     ]
+  },
+  "functions": {
+    "source": "functions"
   }
 }

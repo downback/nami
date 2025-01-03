@@ -1,3 +1,4 @@
+const functions = require("firebase-functions")
 const express = require("express")
 const nodemailer = require("nodemailer")
 const cors = require("cors")
@@ -7,7 +8,15 @@ const dotenv = require("dotenv")
 dotenv.config()
 
 const app = express()
-app.use(cors())
+app.use(express.json())
+
+const corsOptions = {
+  origin: "https://nami-tattoo.web.app",
+  // methods: ["POST", "OPTIONS"],
+  methods: "POST",
+}
+app.use(cors(corsOptions))
+// app.options("*", cors(corsOptions))
 
 const upload = multer({ storage: multer.memoryStorage() })
 
@@ -72,24 +81,24 @@ function sendEmail(
 
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-        console.log(error)
-        return reject({ message: "An error occurred" })
+        console.error(error)
+        return reject({ message: "An error occurred while sending the email." })
       }
-      resolve({ message: "Email sent successfully" })
+      resolve({ message: "Email sent successfully." })
     })
   })
 }
 
 app.post("/send", upload.single("referenceImage"), async (req, res) => {
+  console.log("Request body:", req.body)
+  console.log("Uploaded file:", req.file)
   try {
     const response = await sendEmail(req.body, req.file)
-    res.send(response.message)
+    res.status(200).send(response.message)
   } catch (error) {
+    console.error("Error in /send endpoint:", error)
     res.status(500).send(error.message)
   }
 })
 
-const PORT = 5000
-app.listen(PORT, () =>
-  console.log(`Server running on http://localhost:${PORT}`)
-)
+exports.api = functions.https.onRequest(app)
