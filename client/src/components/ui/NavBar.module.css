@@ -1,17 +1,11 @@
 @import "../../styles/variables.css";
 
-@font-face {
-  font-family: "refra";
-  src: url("/fonts/Refra.ttf") format("ttf");
-}
-
 .navbar {
   color: #000;
   position: fixed;
   top: 0;
   right: 0;
-  /* font-family: var(--font-family-refra); */
-  font-family: "refra" !important;
+  font-family: var(--font-family-refra);
   z-index: 10;
   margin: 2.5rem 2rem;
 }

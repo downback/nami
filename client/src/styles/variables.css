@@ -1,8 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap");
 
-@font-face {
+/* @font-face {
   font-family: "refra";
   src: url("/fonts/Refra.ttf") format("ttf");
+} */
+
+@font-face {
+  font-family: "Refra";
+  src: url("/Refra.woff2") format("woff2"), url("/Refra.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 :root {
@@ -17,6 +25,6 @@
   --box-shadow: -2px -2px 1rem 1rem rgba(255, 255, 255, 0.4),
     2px 2px 1rem 0.2rem rgba(255, 255, 255, 0.3);
 
-  --font-family-refra: "refra" !important;
+  --font-family-refra: "Refra", sans-serif;
   --font-family-grotesque: "Darker Grotesque", sans-serif;
 }

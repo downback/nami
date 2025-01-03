@@ -4,11 +4,11 @@
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "headers": [
       {
-        "source": "/fonts/*.ttf",
+        "source": "**/*.woff2",
         "headers": [
           {
-            "key": "Access-Control-Allow-Origin",
-            "value": "*"
+            "key": "Content-Type",
+            "value": "font/woff2"
           }
         ]
       }
