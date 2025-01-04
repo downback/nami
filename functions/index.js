@@ -10,13 +10,14 @@ dotenv.config()
 const app = express()
 app.use(express.json())
 
+// app.use(cors({ origin: "https://nami-tattoo.web.app", methods: "POST" }))
+
 const corsOptions = {
   origin: "https://nami-tattoo.web.app",
-  // methods: ["POST", "OPTIONS"],
   methods: "POST",
+  allowedHeaders: ["Content-Type"],
 }
 app.use(cors(corsOptions))
-// app.options("*", cors(corsOptions))
 
 const upload = multer({ storage: multer.memoryStorage() })
 
@@ -90,15 +91,59 @@ function sendEmail(
 }
 
 app.post("/send", upload.single("referenceImage"), async (req, res) => {
-  console.log("Request body:", req.body)
-  console.log("Uploaded file:", req.file)
   try {
     const response = await sendEmail(req.body, req.file)
-    res.status(200).send(response.message)
+    res.send(response.message)
   } catch (error) {
-    console.error("Error in /send endpoint:", error)
     res.status(500).send(error.message)
   }
 })
+
+// app.post("/send", upload.single("referenceImage"), async (req, res) => {
+//   try {
+//     if (!req.body.name || !req.body.email) {
+//       return res.status(400).json({ error: "Name and email are required" })
+//     }
+
+//     const result = await sendEmail(req.body, req.file)
+//     res.status(200).json({ message: "Email sent successfully", result })
+//   } catch (error) {
+//     console.error("Error sending email:", error)
+//     res
+//       .status(500)
+//       .json({ error: "Failed to send email", details: error.message })
+//   }
+// })
+
+// app.post("/send", upload.single("referenceImage"), async (req, res) => {
+//   console.log("Request received at /send endpoint")
+//   console.log("Request headers:", req.headers)
+//   console.log("Request body:", req.body)
+
+//   if (req.file) {
+//     console.log("Uploaded file:", {
+//       originalname: req.file.originalname,
+//       mimetype: req.file.mimetype,
+//       size: req.file.size,
+//     })
+//   } else {
+//     console.log("No file uploaded.")
+//   }
+
+//   try {
+//     if (!req.body.name || !req.body.email) {
+//       return res.status(400).json({ error: "Name and email are required" })
+//     }
+
+//     const result = await sendEmail(req.body, req.file)
+//     console.log("Email sent successfully:", result)
+//     res.status(200).json({ message: "Email sent successfully", result })
+//   } catch (error) {
+//     console.error("Error in /send endpoint:", error)
+//     res
+//       .status(500)
+//       .json({ error: "Failed to send email", details: error.message })
+//   }
+// })
 
 exports.api = functions.https.onRequest(app)
