@@ -29,22 +29,20 @@ function BookingForm() {
 
   const sendMail = async (values, { resetForm }) => {
     const normalizedValues = Object.fromEntries(
-      Object.entries(values).map(([key, value]) => [key, value || "x"])
+      Object.entries(values).map(([key, value]) => [
+        key,
+        value || "x (not provided)",
+      ])
     )
 
     const formData = new FormData()
-
     Object.keys(normalizedValues).forEach((key) => {
       formData.append(key, normalizedValues[key])
     })
 
     const fileInput = document.querySelector("#referenceImage")
-    if (fileInput?.files[0]) {
+    if (fileInput.files.length > 0) {
       formData.append("referenceImage", fileInput.files[0])
-    }
-
-    for (let [key, value] of formData.entries()) {
-      console.log(key, value)
     }
 
     try {
@@ -53,10 +51,8 @@ function BookingForm() {
       setErrorVisible(false)
       const apiUrl = `${import.meta.env.VITE_API_URL}/send`
 
-      // await axios.post(apiUrl, formData)
-
       await axios.post(apiUrl, formData, {
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "multipart/form-data" },
       })
       console.log("Email sent successfully")
       resetForm()
@@ -70,7 +66,6 @@ function BookingForm() {
   const closeModal = () => {
     setModalVisible(false)
   }
-  console.log("header again")
 
   return (
     <div className={styles.container}>
