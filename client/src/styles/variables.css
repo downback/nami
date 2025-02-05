@@ -1,13 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap");
 
-@font-face {
-  font-family: "Refra";
-  src: url("/Refra.woff2") format("woff2"), url("/Refra.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   --primary-color: #000;
   --secondary-color: #141413;
