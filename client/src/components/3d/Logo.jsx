@@ -199,7 +199,7 @@ export function Logo(props) {
         dispose={null}
         ref={logo}
         position={[0, 0, -2.6]}
-        rotation={[0.2, 0, 0]}
+        rotation={[0, 0, 0]}
         scale={[2.2, 2.2, 0.1]}
       >
         <mesh
