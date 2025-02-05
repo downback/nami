@@ -17,7 +17,7 @@
   width: 94vw;
   height: 90vh;
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 3px;
   background-color: var(--secondary-color);
   box-shadow: -2px -2px 2rem 1.5rem rgba(20, 20, 19, 1),
     2px 2px 2rem 1.5rem rgba(20, 20, 19, 1);
@@ -27,12 +27,13 @@
 
 .backButtonContainer {
   position: fixed;
-  top: 1.5rem;
-  left: 1.8rem;
+  top: 2rem;
+  left: 2rem;
   background: none;
   border: none;
   font-size: 1.5em;
   cursor: pointer;
+  z-index: 100;
 }
 
 .backButton {
@@ -65,13 +66,14 @@
 @media (max-width: 768px) {
   .contentContainer {
     width: 85vw;
-    height: 92vh;
+    height: 94vh;
   }
   .childrenContainer {
     padding: 0;
+    margin-bottom: 2rem;
   }
   .backButtonContainer {
-    top: 2rem;
-    left: 1.7rem;
+    top: 1.8rem;
+    left: 1.8rem;
   }
 }

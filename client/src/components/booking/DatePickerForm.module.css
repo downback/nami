@@ -9,10 +9,11 @@
   outline: none;
   transition: border-color 0.3s ease-in-out;
   align-self: center;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .datePickerCalendar {
   position: absolute;
   z-index: 1000;
-  transform: translatex(-3rem);
+  transform: translatex(-50%);
 }

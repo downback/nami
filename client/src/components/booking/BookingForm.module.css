@@ -3,7 +3,7 @@
 .container {
   max-width: 600px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 2rem 2rem 4rem 2rem;
   background-color: var(--secondary-color);
   display: flex;
   flex-direction: column;
@@ -14,8 +14,8 @@
 .title {
   font-size: 2rem;
   color: var(--secondary-font-color);
-  margin: 15vh 0;
-  font-family: var(--font-family-refra);
+  margin: 4vh 0 7vh 0;
+  font-family: var(--font-family-grotesque);
 }
 
 .form {
@@ -29,17 +29,14 @@
 }
 
 .fieldGroup {
-  width: 80%;
+  width: 90%;
   height: auto;
   background-color: var(--whiteBg-color);
   margin-bottom: 2rem;
   padding: 20px;
-  border-radius: 0.7rem;
+  border-radius: 3px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  /* box-shadow: -2px -2px 0.5rem 0.4rem rgba(255, 255, 255, 0.2),
-    2px 2px 0.5rem 0.4rem rgba(255, 255, 255, 0.2); */
 }
 
 .label {
@@ -52,7 +49,6 @@
   width: 100%;
   font-size: 16px;
   margin-top: 5px;
-  /* border: 1px solid #ccc; */
   border: none;
   border-bottom: 1px solid #ccc;
   background: transparent;
@@ -67,19 +63,16 @@
   transform: translatex(3rem);
 }
 
-/* Style for unavailable dates */
 .unavailableDate {
-  background-color: #f0e68c !important; /* Khaki color for unavailable dates */
-  color: #808080 !important; /* Gray text */
-  pointer-events: none; /* Disable interaction */
+  background-color: #f0e68c !important;
+  color: #808080 !important;
+  pointer-events: none;
   opacity: 0.6;
 }
 
 .input {
   width: 100%;
-  font-size: 16px;
   margin-top: 5px;
-  /* border: 1px solid #ccc; */
   border: none;
   border-bottom: 1px solid #ccc;
   background: transparent;
@@ -105,7 +98,8 @@
   background: transparent;
   outline: none;
   transition: border-color 0.3s ease-in-out;
-  align-self: flex-start;
+  /* align-self: flex-start; */
+  align-self: center;
   font-size: 0.9rem;
 }
 
@@ -130,12 +124,12 @@
   padding: 0.5rem 2rem;
   color: var(--primary-color);
   background-color: rgba(255, 255, 255, 0.9);
-  font-family: var(--font-family-refra);
+  font-family: var(--font-family-grotesque);
   border-radius: 2rem;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  box-shadow: -2px -2px 1rem 0.6rem rgba(255, 255, 255, 0.8),
+  box-shadow: -2px -2px 1rem 0.8rem rgba(255, 255, 255, 0.8),
     2px 2px 1rem 0.6rem rgba(255, 255, 255, 0.8);
 }
 
@@ -163,13 +157,13 @@
 
 .required {
   align-self: flex-start;
-  margin-left: 3rem;
+  /* margin-left: 3rem; */
   color: var(--secondary-font-color);
 }
 
 .submitError {
   align-self: flex-start;
-  margin-left: 3rem;
+  /* margin-left: 3rem; */
   color: red;
   font-size: 1.2rem;
 }
@@ -230,15 +224,17 @@
 }
 
 @media (max-width: 768px) {
-  .modalCloseButton {
+  .title {
+    font-size: 1.5rem;
+  }
+  .container {
+    padding: 2rem 2rem 6rem 2rem;
   }
   .required {
     align-self: flex-start;
-    margin-left: 1rem;
     color: var(--secondary-font-color);
   }
   .submitError {
-    margin-left: 1rem;
     font-size: 0.9rem;
   }
 }

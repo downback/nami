@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useRef, useState } from "react"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -10,18 +10,17 @@ import styles from "./Navbar.module.css"
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 gsap.registerPlugin(useGSAP)
 
-const Navbar = ({ pageContainer }) => {
+const Navbar = () => {
   const linksRef = useRef([])
   const navbarContainer = useRef()
   const navbar = useRef()
   const navigate = useNavigate()
+  const [isNavigating, setIsNavigating] = useState(false)
 
   useGSAP(() => {
     ScrollTrigger.create({
       start: "top -200",
       end: "bottom 500",
-      id: "navbar",
-      markers: false,
       toggleClass: {
         targets: navbar.current,
         className: `${styles.isActive}`,
@@ -50,6 +49,10 @@ const Navbar = ({ pageContainer }) => {
       link.addEventListener("click", (e) => {
         e.preventDefault()
 
+        if (isNavigating) return
+
+        setIsNavigating(true)
+
         links.forEach((l) => l.classList.remove(styles.active))
         link.classList.add(styles.active)
 
@@ -61,12 +64,13 @@ const Navbar = ({ pageContainer }) => {
           onComplete: () => {
             setTimeout(() => {
               navigate(`/${link.id}`)
-            }, 1200)
+              setIsNavigating(false)
+            }, 600)
           },
         })
       })
     })
-  }, [])
+  }, [isNavigating])
 
   return (
     <nav ref={navbarContainer} className={styles.navbar}>
@@ -74,7 +78,9 @@ const Navbar = ({ pageContainer }) => {
         <li>
           <a
             href="#landing_section-1"
-            className={styles.navItem}
+            className={`${styles.navItem} ${
+              isNavigating ? styles.disabled : ""
+            }`}
             ref={(el) => (linksRef.current[0] = el)}
           >
             HOME
@@ -83,7 +89,9 @@ const Navbar = ({ pageContainer }) => {
         <li>
           <a
             href="#landing_section-2"
-            className={styles.navItem}
+            className={`${styles.navItem} ${
+              isNavigating ? styles.disabled : ""
+            }`}
             ref={(el) => (linksRef.current[1] = el)}
             id="flash"
           >
@@ -93,7 +101,9 @@ const Navbar = ({ pageContainer }) => {
         <li>
           <a
             href="#landing_section-3"
-            className={styles.navItem}
+            className={`${styles.navItem} ${
+              isNavigating ? styles.disabled : ""
+            }`}
             ref={(el) => (linksRef.current[2] = el)}
             id="booking"
           >

@@ -39,7 +39,6 @@ app.post("/send", async (req, res) => {
     file.on("end", () => {
       fileBuffer = Buffer.concat(chunks)
 
-      // Preserve the file extension based on the mimetype
       const ext =
         path.extname(originalFileName) || `.${originalFileType.split("/")[1]}`
       fileName =

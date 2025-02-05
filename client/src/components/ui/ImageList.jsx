@@ -1,32 +1,49 @@
 import React, { useEffect, useState } from "react"
 import { getStorage, ref, listAll, getDownloadURL } from "firebase/storage"
+import { collection, getDocs } from "firebase/firestore"
+import { db } from "../../services/firebase-config"
 import styles from "./ImageList.module.css"
 import DetailView from "./DetailView"
 
-const ImageList = ({ folderName, title }) => {
+const ImageList = ({ folderName, title, isCaption }) => {
   const [images, setImages] = useState([])
+  const [captions, setCaptions] = useState({})
   const [loading, setLoading] = useState(true)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [sliderOpen, setSliderOpen] = useState(false)
 
   useEffect(() => {
-    const fetchImages = async () => {
+    const fetchImagesAndCaptions = async () => {
       try {
         const storage = getStorage()
         const listRef = ref(storage, folderName)
         const response = await listAll(listRef)
+
         const urls = await Promise.all(
-          response.items.map((item) => getDownloadURL(item))
+          response.items.map(async (item) => {
+            const url = await getDownloadURL(item)
+            return { name: item.name, url }
+          })
         )
+
         setImages(urls)
+
+        const captionsCollection = collection(db, "galleryCaptions")
+        const captionsSnapshot = await getDocs(captionsCollection)
+        const captionsData = {}
+        captionsSnapshot.forEach((doc) => {
+          captionsData[doc.id] = doc.data().caption
+        })
+
+        setCaptions(captionsData)
       } catch (error) {
-        console.error("Error fetching images:", error)
+        console.error("Error fetching images or captions:", error)
       } finally {
         setLoading(false)
       }
     }
 
-    fetchImages()
+    fetchImagesAndCaptions()
   }, [folderName])
 
   const openSlider = (index) => {
@@ -48,7 +65,7 @@ const ImageList = ({ folderName, title }) => {
     <div className={styles.container}>
       <div className={styles.title}>{title}</div>
       {loading ? (
-        <p className={styles.loading}>Loading images...</p>
+        <p className={styles.loading}>Loading...</p>
       ) : images.length === 0 ? (
         <p className={styles.noImages}>No images found.</p>
       ) : (
@@ -60,10 +77,15 @@ const ImageList = ({ folderName, title }) => {
               onClick={() => openSlider(index)}
             >
               <img
-                src={image}
+                src={image.url}
                 alt={`Gallery item ${index + 1}`}
                 className={styles.image}
               />
+              {isCaption && (
+                <div className={styles.captionText}>
+                  {captions[image.name] || ""}
+                </div>
+              )}
             </div>
           ))}
         </div>

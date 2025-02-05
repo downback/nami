@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import {
+  getFirestore,
   collection,
   getDocs,
   addDoc,
@@ -7,11 +8,11 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore"
-import { db } from "../../services/firebase-config"
 import styles from "./AdminDateUpdate.module.css"
 import WhiteWrapper from "../ui/WhiteWrapper"
 
 function AdminDateUpdate() {
+  const db = getFirestore()
   const [dates, setDates] = useState([])
   const [newDate, setNewDate] = useState("")
 
@@ -29,7 +30,6 @@ function AdminDateUpdate() {
           ...doc.data(),
         }))
         setDates(fetchedDates)
-        // console.log("Fetched dates successfully:", fetchedDates)
       } catch (error) {
         console.error("Error fetching dates:", error)
       }

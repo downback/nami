@@ -1,7 +1,7 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
-import styles from "./BlackWrapper.module.css"
 import { IoArrowBackOutline } from "react-icons/io5"
+import styles from "./BlackWrapper.module.css"
 
 const BlackWrapper = ({ children }) => {
   const navigate = useNavigate()

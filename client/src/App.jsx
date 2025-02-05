@@ -28,11 +28,23 @@ function App() {
         <Route path="/imprint" element={<Imprint />} />
         <Route
           path="/admin/gallery"
-          element={<AdminForm folderName="gallery" title="Gallery Page" />}
+          element={
+            <AdminForm
+              folderName="gallery"
+              title="Gallery Page"
+              isCaption={true}
+            />
+          }
         />
         <Route
           path="/admin/flash"
-          element={<AdminForm folderName="flash" title="Flash Page" />}
+          element={
+            <AdminForm
+              folderName="flash"
+              title="Flash Page"
+              isCaption={false}
+            />
+          }
         />
         <Route path="/admin/dates" element={<AdminDateUpdate />} />
       </Routes>
@@ -41,43 +53,3 @@ function App() {
 }
 
 export default App
-
-// TODO
-
-//[ ] MODEL BLENDER
-//[ ] MENU BAR UI TEST
-//[ ] Loader styling
-//[x] firebase auth check
-//[x] LANDING PAGE TEXT TYPING ANIMATION
-//[x] SLIDER
-//[x] VALIDATION
-
-// Admin page
-// [x]  - firebase auth change check
-// [x]  - styling
-// [x]  - mobile responsive design
-// 매일 받을 이메일 주소 /  authentication
-
-// Landing page
-// [-]  - environment color
-// [x]  -  3d model loading animation
-// [x]  -  mobile responsive design
-// [x]  - font
-// [x]  - menu bar opacity change (opacity 낮추고 필터 더 적용 / hover -> bold)
-// [x]  - menu bar click timeout
-// [x]  - footer copyright and so on (imprint 주소 빼고 나머지는 그대로 가져오기)
-// [x]  - typing animation
-// [x]  - privacy policy width change
-
-// gallery page & flash page
-// [ ]  - mobile responsive design
-// [x]  - 상세 페이지 Slider <- 버튼 / slider는 x
-// [x]  - wrapper styling adjust
-
-// Booking page
-// [ ]  - mobile responsive design
-// [x]  - 확인 메일
-// [x]  - submit validation
-// [x]  - Booking page calendar possibility research
-// [x]  - Booking page / budget 150-250 ... 650-  (required)
-// [x]  - reservation form update

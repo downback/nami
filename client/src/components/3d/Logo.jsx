@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 gsap.registerPlugin(useGSAP)
 
 export function Logo(props) {
-  const { nodes, materials } = useGLTF("/namilogo.glb")
+  const { nodes, materials } = useGLTF("/Namilogo.glb")
   const logo = useRef()
   const { scene, camera } = useThree()
   const tl = gsap.timeline()
@@ -67,39 +67,52 @@ export function Logo(props) {
   // })
 
   const [stopRotation, setStopRotation] = useState(false)
-
+  const startTime = useRef(null)
   useFrame(({ clock }) => {
-    const elapsedTime = clock.getElapsedTime()
     if (logo.current && !stopRotation) {
-      // logo.current.rotation.y += 0.005
-      logo.current.rotation.x = Math.sin(elapsedTime * 0.3)
+      if (startTime.current === null) {
+        startTime.current = clock.getElapsedTime()
+      }
+
+      const elapsedTime = clock.getElapsedTime() - startTime.current
+      logo.current.rotation.x = Math.sin(elapsedTime * Math.PI * -0.1)
+    } else {
+      startTime.current = null
     }
   })
 
-  //UseGSAP
   useGSAP(() => {
     tl.from(scene.position, {
       z: -5,
       duration: 2.5,
       ease: "power2.out",
     })
-    // Animation for #landing_section-2
-    tl.to(scene.position, {
-      x: -2.05,
-      y: 1.75,
-      z: -0.95,
-      scrollTrigger: {
-        trigger: "#landing_section-2",
-        start: "top bottom",
-        end: "bottom bottom",
-        scrub: true,
-        markers: false,
-        id: "trigger1",
-        immediateRender: false,
-        onEnter: () => setStopRotation(true),
-        onLeaveBack: () => setStopRotation(false),
-      },
-    })
+
+      // Animation for #landing_section-2
+      .to(logo.current.rotation, {
+        x: 0,
+        scrollTrigger: {
+          trigger: "#landing_section-2",
+          start: "top bottom",
+          end: "bottom bottom",
+          scrub: true,
+          immediateRender: false,
+        },
+      })
+      .to(scene.position, {
+        x: -2.05,
+        y: 1.75,
+        z: -0.95,
+        scrollTrigger: {
+          trigger: "#landing_section-2",
+          start: "top bottom",
+          end: "bottom bottom",
+          scrub: true,
+          immediateRender: false,
+          onEnter: () => setStopRotation(true),
+          onLeaveBack: () => setStopRotation(false),
+        },
+      })
       .to(scene.rotation, {
         x: -0.68,
         y: -0.44,
@@ -124,8 +137,6 @@ export function Logo(props) {
           start: "top bottom",
           end: "bottom bottom",
           scrub: true,
-          markers: false,
-          id: "trigger2",
           immediateRender: false,
         },
       })
@@ -139,25 +150,21 @@ export function Logo(props) {
           start: "top bottom",
           end: "bottom bottom",
           scrub: true,
-          markers: false,
-          id: "trigger2",
           immediateRender: false,
         },
       })
 
       // Animation for #landing_section-4
       .to(scene.position, {
-        x: 0,
+        x: 0.1,
         y: 0,
-        z: -2.0,
+        z: -3.5,
         delay: 2,
         scrollTrigger: {
           trigger: "#landing_section-4",
           start: "top bottom",
           end: "bottom bottom",
           scrub: true,
-          markers: false,
-          id: "trigger2",
           immediateRender: false,
         },
       })
@@ -171,8 +178,6 @@ export function Logo(props) {
           start: "top bottom",
           end: "bottom bottom",
           scrub: true,
-          markers: false,
-          id: "trigger2",
           immediateRender: false,
         },
       })
@@ -186,49 +191,104 @@ export function Logo(props) {
       <directionalLight
         castShadow
         position={[-2.38, 1.32, 0.74]}
-        intensity={5}
+        intensity={15}
+        color={`rgb(241, 222, 202)`}
       />
-      <ambientLight intensity={0.5} />
       <group
         {...props}
         dispose={null}
         ref={logo}
         position={[0, 0, -2.6]}
-        rotation={[90, 0, 0]}
+        rotation={[0.2, 0, 0]}
+        scale={[2.2, 2.2, 0.1]}
       >
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Mesh_1.geometry}
-          material={nodes.Mesh_1.material}
+          geometry={nodes.Box_ext_1.geometry}
+          material={nodes.Box_ext_1.material}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Mesh_2.geometry}
-          material={nodes.Mesh_2.material}
+          geometry={nodes.Box_ext_2.geometry}
+          material={nodes.Box_ext_2.material}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Mesh_3.geometry}
-          material={nodes.Mesh_3.material}
+          geometry={nodes.Box_ext_3.geometry}
+          material={nodes.Box_ext_3.material}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Mesh_4.geometry}
-          material={nodes.Mesh_4.material}
+          geometry={nodes.Box_ext_4.geometry}
+          material={nodes.Box_ext_4.material}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Mesh_5.geometry}
-          material={nodes.Mesh_5.material}
+          geometry={nodes.Box_ext_5.geometry}
+          material={nodes.Box_ext_5.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Box_ext_6.geometry}
+          material={nodes.Box_ext_6.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Box_ext_7.geometry}
+          material={nodes.Box_ext_7.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Box_ext_8.geometry}
+          material={nodes.Box_ext_8.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Box_ext_9.geometry}
+          material={nodes.Box_ext_9.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Box_ext_10.geometry}
+          material={nodes.Box_ext_10.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Box_ext_11.geometry}
+          material={nodes.Box_ext_11.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Box_ext_12.geometry}
+          material={nodes.Box_ext_12.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Box_ext_13.geometry}
+          material={nodes.Box_ext_13.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Box_ext_14.geometry}
+          material={nodes.Box_ext_14.material}
         />
       </group>
     </>
   )
 }
 
-useGLTF.preload("/namilogo.glb")
+useGLTF.preload("/Namilogo.glb")

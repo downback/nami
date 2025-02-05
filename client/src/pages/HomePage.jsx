@@ -31,8 +31,6 @@ const HomePage = () => {
       start: "top bottom",
       end: "bottom bottom",
       scrub: true,
-      markers: false,
-      id: "intro",
     })
   }, [])
 

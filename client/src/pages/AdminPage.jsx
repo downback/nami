@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import {
+  getAuth,
   onAuthStateChanged,
   signOut,
   signInWithEmailAndPassword,
@@ -12,6 +13,8 @@ import styles from "./AdminPage.module.css"
 
 const AdminPage = () => {
   const [modalVisible, setModalVisible] = useState(true)
+
+  const auth = getAuth()
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")

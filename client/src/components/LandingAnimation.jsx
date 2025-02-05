@@ -34,7 +34,6 @@ function LandingAnimation() {
           const chars = splitInstance.chars
 
           gsap.from(chars, {
-            yPercent: 100,
             duration: 0.5,
             ease: "power2.out",
             stagger: 0.05,
@@ -42,10 +41,7 @@ function LandingAnimation() {
               trigger: targetSection,
               start: "top 100",
               end: "+=100%",
-              pin: true,
-              anticipatePin: 1,
               toggleActions: "play none reverse none",
-              markers: false,
             },
           })
         }
@@ -95,9 +91,7 @@ function LandingAnimation() {
             <div
               ref={(el) => (textAnimations.current[0] = el)}
               data-target="landing_section-2"
-            >
-              Flash ... go to see flashes
-            </div>
+            ></div>
           </Link>
         </div>
       </section>
@@ -111,9 +105,7 @@ function LandingAnimation() {
             <div
               ref={(el) => (textAnimations.current[1] = el)}
               data-target="landing_section-3"
-            >
-              Booking ... go to book an appointment
-            </div>
+            ></div>
           </Link>
         </div>
       </section>
@@ -127,9 +119,7 @@ function LandingAnimation() {
             <div
               ref={(el) => (textAnimations.current[2] = el)}
               data-target="landing_section-4"
-            >
-              Gallery ... check out my graphic designs
-            </div>
+            ></div>
           </Link>
         </div>
       </section>

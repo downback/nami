@@ -12,8 +12,6 @@ const DetailView = ({ images, currentIndex, onClose, onIndexChange }) => {
   const [displayedImages, setDisplayedImages] = useState([])
   const [nextImageAnimation, setNextImageAnimation] = useState(false)
   const [prevImageAnimation, setPrevImageAnimation] = useState(false)
-  //   const [isLoaded, setIsLoaded] = useState(false)
-  //   const [preloadedImages, setPreloadedImages] = useState([])
 
   useEffect(() => {
     const initializeImages = () => {
@@ -30,25 +28,6 @@ const DetailView = ({ images, currentIndex, onClose, onIndexChange }) => {
 
     initializeImages()
   }, [currentIndex, images])
-
-  //   useEffect(() => {
-  //     const preloadImages = async () => {
-  //       const loadedImages = await Promise.all(
-  //         images.map((src) => {
-  //           return new Promise((resolve) => {
-  //             const img = new Image()
-  //             img.src = src
-  //             img.onload = () => resolve(src)
-  //             img.onerror = () => resolve(null)
-  //           })
-  //         })
-  //       )
-  //       setPreloadedImages(loadedImages.filter(Boolean)) // Filter out failed loads
-  //       setIsLoaded(true) // Mark as loaded
-  //     }
-
-  //     preloadImages()
-  //   }, [images])
 
   const handlePrev = () => {
     if (currentIndex > 0) {
@@ -124,27 +103,25 @@ const DetailView = ({ images, currentIndex, onClose, onIndexChange }) => {
       </button>
 
       <div className={styles.sliderContainer}>
-        <div className={styles.imageCardContainer}>
-          {displayedImages.map((image, offset) => (
-            <div
-              key={offset}
-              className={`${styles.sliderImageWrapper} ${
-                prevImageAnimation && styles.prev
-              } ${nextImageAnimation && styles.next} `}
-              onClick={() => handleImageClick(offset - 2)}
-            >
-              {image ? (
-                <img
-                  src={image}
-                  alt={`Image ${currentIndex + offset - 2}`}
-                  className={styles.image}
-                />
-              ) : (
-                <div className={styles.placeholder}></div>
-              )}
-            </div>
-          ))}
-        </div>
+        {displayedImages.map((image, offset) => (
+          <div
+            key={offset}
+            className={`${styles.sliderImageWrapper} ${
+              prevImageAnimation && styles.prev
+            } ${nextImageAnimation && styles.next} `}
+            onClick={() => handleImageClick(offset - 2)}
+          >
+            {image ? (
+              <img
+                src={image.url}
+                alt={`Image ${currentIndex + offset - 2}`}
+                className={styles.image}
+              />
+            ) : (
+              <div className={styles.placeholder}></div>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   )
