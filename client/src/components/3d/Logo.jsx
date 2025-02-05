@@ -75,7 +75,9 @@ export function Logo(props) {
       }
 
       const elapsedTime = clock.getElapsedTime() - startTime.current
-      logo.current.rotation.x = Math.sin(elapsedTime * Math.PI * -0.1)
+      logo.current.rotation.x = Math.sin(
+        elapsedTime * Math.PI * 0.1 - Math.PI / 2
+      )
     } else {
       startTime.current = null
     }
@@ -199,7 +201,7 @@ export function Logo(props) {
         dispose={null}
         ref={logo}
         position={[0, 0, -2.6]}
-        rotation={[0, 0, 0]}
+        rotation={[0.5, 0, 0]}
         scale={[2.2, 2.2, 0.1]}
       >
         <mesh
