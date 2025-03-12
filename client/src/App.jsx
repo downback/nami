@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage"
 import BookingPage from "./pages/BookingPage"
 import FlashPage from "./pages/FlashPage"
 import GalleryPage from "./pages/GalleryPage"
+import ContactPage from "./pages/ContactPage"
 import AdminPage from "./pages/AdminPage"
 import AdminForm from "./components/admin/AdminForm"
 import PrivacyPolicy from "./pages/PrivacyPolicy"
@@ -23,6 +24,7 @@ function App() {
         <Route path="/booking" element={<BookingPage />} />
         <Route path="/flash" element={<FlashPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
+        <Route path="/contact" element={<ContactPage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/imprint" element={<Imprint />} />
@@ -53,3 +55,24 @@ function App() {
 }
 
 export default App
+
+// TODO
+
+//[ ] Landing page section3 animation test
+
+//ImageList
+//[ ] gallery separated slider for each category
+//[ ] ADMIN- gallery separated slider for each category
+//[ ] admin image order change?
+//[ ] images cache for faster loading
+//[x] go up btn
+
+//[x] Landing page animation loading zoom in Issue
+
+//BookingPage
+//[x] alternative desired date text input add
+//[x] booking page loading on bottom side issue
+//[x] checkbox align center
+//[x] checkbox active black
+//[x] Desired Date width check
+//[x] leave Desired Date & add alternative date box

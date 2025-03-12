@@ -115,7 +115,7 @@
 
 .sliderImageWrapper:nth-child(3) {
   z-index: 30;
-  box-shadow: var(--box-shadow);
+  /* box-shadow: var(--box-shadow); */
 }
 
 .sliderImageWrapper:nth-child(4) {

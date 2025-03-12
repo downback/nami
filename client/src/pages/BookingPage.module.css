@@ -1,0 +1,35 @@
+.container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15vh;
+  background-color: var(--secondary-color);
+  font-family: var(--font-family-grotesque);
+}
+
+.backButtonContainer {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.backButton {
+  color: white;
+  font-size: 0.7em;
+  transition: transform 0.2s;
+}
+
+@media (max-width: 768px) {
+  .backButtonContainer {
+    top: 2rem;
+    left: 1.5rem;
+  }
+}

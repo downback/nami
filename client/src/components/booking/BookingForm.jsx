@@ -2,11 +2,11 @@ import React, { useState } from "react"
 import axios from "axios"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from "yup"
-import styles from "./BookingForm.module.css"
 import Modal from "../ui/Modal"
 import { IoCloseOutline } from "react-icons/io5"
-
 import DatePickerForm from "./DatePickerForm"
+
+import styles from "./BookingForm.module.css"
 
 const BookingFormSchema = Yup.object().shape({
   name: Yup.string().required("Full name is required"),
@@ -15,11 +15,13 @@ const BookingFormSchema = Yup.object().shape({
   designType: Yup.string().required("Design type is required"),
   size: Yup.string().required("Size is required"),
   date: Yup.date().nullable().required("Desired date is required"),
+  alternativeDate: Yup.string(),
   designDetails: Yup.string(),
   budget: Yup.string().required("Budget is required"),
   age: Yup.string(),
   medication: Yup.string(),
   extraInfo: Yup.string(),
+  consent: Yup.boolean().oneOf([true], "Consent is required"),
 })
 
 function BookingForm() {
@@ -78,10 +80,12 @@ function BookingForm() {
           designType: "",
           size: "",
           date: null,
+          alternativeDate: "",
           designDetails: "",
           budget: "",
           medication: "",
           extraInfo: "",
+          consent: false,
         }}
         validationSchema={BookingFormSchema}
         onSubmit={sendMail}
@@ -92,82 +96,140 @@ function BookingForm() {
               <label className={styles.label} htmlFor="name">
                 Full Name*
               </label>
-              <Field name="name" type="text" className={styles.input} />
-              <ErrorMessage
-                name="name"
-                component="div"
-                className={styles.error}
-              />
+              <div className={styles.inputWrapper}>
+                <Field name="name" type="text" className={styles.input} />
+                <ErrorMessage
+                  name="name"
+                  component="div"
+                  className={styles.error}
+                />
+              </div>
             </div>
 
             <div className={styles.fieldGroup}>
               <label className={styles.label} htmlFor="pronouns">
                 Pronouns*
               </label>
-              <Field name="pronouns" type="text" className={styles.input} />
-              <ErrorMessage
-                name="pronouns"
-                component="div"
-                className={styles.error}
-              />
+              <div className={styles.inputWrapper}>
+                <Field name="pronouns" type="text" className={styles.input} />
+                <ErrorMessage
+                  name="pronouns"
+                  component="div"
+                  className={styles.error}
+                />
+              </div>
             </div>
 
             <div className={styles.fieldGroup}>
               <label className={styles.label} htmlFor="email">
                 Email*
               </label>
-              <Field name="email" type="email" className={styles.input} />
-              <ErrorMessage
-                name="email"
-                component="div"
-                className={styles.error}
-              />
+              <div className={styles.inputWrapper}>
+                <Field name="email" type="email" className={styles.input} />
+                <ErrorMessage
+                  name="email"
+                  component="div"
+                  className={styles.error}
+                />
+              </div>
             </div>
 
             <div className={styles.fieldGroup}>
               <label className={styles.label}>Design Type*</label>
-              <div role="group" className={styles.radioGroup}>
-                <label className={styles.label}>
-                  <Field type="radio" name="designType" value="flash" />
-                  Flash
-                </label>
-                <label className={styles.label}>
-                  <Field type="radio" name="designType" value="custom" />
-                  Custom
-                </label>
+              <div className={styles.inputWrapper}>
+                <div role="group" className={styles.radioGroup}>
+                  <label className={styles.radioWrapper}>
+                    <Field
+                      type="radio"
+                      name="designType"
+                      value="flash"
+                      className={styles.radioInput}
+                    />
+                    <span className={styles.radioText}>Flash</span>
+                  </label>
+                  <label className={styles.radioWrapper}>
+                    <Field
+                      type="radio"
+                      name="designType"
+                      value="custom"
+                      className={styles.radioInput}
+                    />
+                    <span className={styles.radioText}>Custom (+70eu)</span>
+                  </label>
+                </div>
+                <ErrorMessage
+                  name="designType"
+                  component="div"
+                  className={styles.error}
+                />
               </div>
-              <ErrorMessage
-                name="designType"
-                component="div"
-                className={styles.error}
-              />
             </div>
 
             <div className={styles.fieldGroup}>
               <label className={styles.label} htmlFor="size">
-                Placement on body and size*
+                Placement on body and size (in cm)*
               </label>
-              <Field name="size" type="text" className={styles.input} />
-              <ErrorMessage
-                name="size"
-                component="div"
-                className={styles.error}
-              />
+              <div className={styles.inputWrapper}>
+                <Field name="size" type="text" className={styles.input} />
+                <ErrorMessage
+                  name="size"
+                  component="div"
+                  className={styles.error}
+                />
+              </div>
             </div>
 
             <div className={styles.fieldGroup}>
               <label className={styles.label} htmlFor="date">
                 Desired Date*
               </label>
-              <DatePickerForm
-                selectedDate={values.date}
-                setFieldValue={setFieldValue}
-              />
-              <ErrorMessage
-                name="date"
-                component="div"
-                className={styles.error}
-              />
+              <div className={styles.inputWrapper}>
+                <div className={styles.datePickerWrapper}>
+                  <DatePickerForm
+                    selectedDate={values.date}
+                    setFieldValue={setFieldValue}
+                  />
+                  <ErrorMessage
+                    name="date"
+                    component="div"
+                    className={styles.error}
+                  />
+                </div>
+              </div>
+              <label className={styles.subLabel} htmlFor="date">
+                In case your desired date doesn't meet with available dates,
+                please write here.
+              </label>
+
+              <div className={styles.inputWrapper}>
+                <Field
+                  name="alternativeDate"
+                  type="text"
+                  className={styles.input}
+                />
+              </div>
+            </div>
+
+            <div className={styles.fieldGroup}>
+              <label className={styles.label} htmlFor="budget">
+                What is your budget?*
+              </label>
+              <div className={styles.inputWrapper}>
+                <Field name="budget" as="select" className={styles.input}>
+                  <option value=" " label="Choose your budget" />
+                  <option value="150-250" label="150-250" />
+                  <option value="250-350" label="250-350" />
+                  <option value="450-550" label="450-550" />
+                  <option value="550-650" label="550-650" />
+                  <option value="650-" label="650-" />
+                  <option value="individual price" label="individual price" />
+                </Field>
+                <ErrorMessage
+                  name="budget"
+                  component="div"
+                  className={styles.error}
+                />
+              </div>
             </div>
 
             <div className={styles.fieldGroup}>
@@ -176,56 +238,55 @@ function BookingForm() {
                 like to get, you can upload an image / my previous work as a
                 reference for custom design
               </label>
-              <Field
-                name="designDetails"
-                as="textarea"
-                className={styles.textarea}
-              />
-              <ErrorMessage
-                name="designDetails"
-                component="div"
-                className={styles.error}
-              />
-              <input
-                type="file"
-                id="referenceImage"
-                name="referenceImage"
-                className={styles.imageUploader}
-              />
-            </div>
-
-            <div className={styles.fieldGroup}>
-              <label className={styles.label} htmlFor="budget">
-                What is your budget?*
-              </label>
-              <Field name="budget" as="select" className={styles.input}>
-                <option value=" " label="Choose your budget" />
-                <option value="150-250" label="150-250" />
-                <option value="250-350" label="250-350" />
-                <option value="450-550" label="450-550" />
-                <option value="550-650" label="550-650" />
-                <option value="650- " label="650- " />
-              </Field>
-              <ErrorMessage
-                name="budget"
-                component="div"
-                className={styles.error}
-              />
+              <div className={styles.inputWrapper}>
+                <Field
+                  name="designDetails"
+                  as="textarea"
+                  className={styles.textarea}
+                />
+                <ErrorMessage
+                  name="designDetails"
+                  component="div"
+                  className={styles.error}
+                />
+                <input
+                  type="file"
+                  id="referenceImage"
+                  name="referenceImage"
+                  className={styles.imageUploader}
+                />
+              </div>
             </div>
 
             <div className={styles.fieldGroup}>
               <label className={styles.label} htmlFor="age">
                 Are you 18+?
               </label>
-              <div role="group" aria-labelledby="my-radio-group">
-                <label className={styles.label}>
-                  <Field type="radio" name="age" value="yes" />
-                  Yes
-                </label>
-                <label className={styles.label}>
-                  <Field type="radio" name="age" value="no" />
-                  No
-                </label>
+              <div className={styles.inputWrapper}>
+                <div
+                  role="group"
+                  aria-labelledby="my-radio-group"
+                  className={styles.radioGroup}
+                >
+                  <label className={styles.radioWrapper}>
+                    <Field
+                      type="radio"
+                      name="age"
+                      value="yes"
+                      className={styles.radioInput}
+                    />
+                    <span className={styles.radioText}>Yes</span>
+                  </label>
+                  <label className={styles.radioWrapper}>
+                    <Field
+                      type="radio"
+                      name="age"
+                      value="no"
+                      className={styles.radioInput}
+                    />
+                    <span className={styles.radioText}>No</span>
+                  </label>
+                </div>
               </div>
             </div>
 
@@ -233,14 +294,35 @@ function BookingForm() {
               <label className={styles.label} htmlFor="medication">
                 Medication
               </label>
-              <Field name="medication" type="text" className={styles.input} />
+              <div className={styles.inputWrapper}>
+                <Field name="medication" type="text" className={styles.input} />
+              </div>
             </div>
 
             <div className={styles.fieldGroup}>
               <label className={styles.label} htmlFor="extraInfo">
                 Any other info or questions about your booking?
               </label>
-              <Field name="extraInfo" type="text" className={styles.input} />
+              <div className={styles.inputWrapper}>
+                <Field name="extraInfo" type="text" className={styles.input} />
+              </div>
+            </div>
+
+            <div>
+              <label className={styles.label}>
+                <Field
+                  type="checkbox"
+                  name="consent"
+                  className={styles.consentCheckbox}
+                />
+                I agree to the privacy policy and consent to the processing of
+                my personal data for the purpose of scheduling an appointment.
+              </label>
+              <ErrorMessage
+                name="consent"
+                component="div"
+                className={styles.error}
+              />
             </div>
 
             <div className={styles.required}>* required</div>

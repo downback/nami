@@ -60,6 +60,7 @@ app.post("/send", async (req, res) => {
         designType,
         size,
         date,
+        alternativeDate,
         designDetails,
         budget,
         age = "x (not provided)",
@@ -83,6 +84,7 @@ app.post("/send", async (req, res) => {
             <p>Design Type: ${designType}</p>
             <p>PLACEMENT & SIZE: ${size}</p>
             <p>DESIRED DATE: ${simplifiedDate}</p>
+            <p>ALTERNATIVE DATE: ${alternativeDate}</p>
             <p>DESIGN DETAILS: ${designDetails}</p>
             <p>Budget: ${budget}€</p>
           <br/>

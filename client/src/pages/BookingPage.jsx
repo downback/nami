@@ -1,13 +1,18 @@
 import React from "react"
 import BookingForm from "../components/booking/BookingForm"
-import BlackWrapper from "../components/ui/BlackWrapper"
+import { useNavigate } from "react-router-dom"
+import { SlArrowLeft } from "react-icons/sl"
+
+import styles from "./BookingPage.module.css"
 
 const BookingPage = () => {
+  const navigate = useNavigate()
   return (
     <div>
-      <BlackWrapper>
-        <BookingForm />
-      </BlackWrapper>
+      <div className={styles.backButtonContainer} onClick={() => navigate("/")}>
+        <SlArrowLeft className={styles.backButton} />
+      </div>
+      <BookingForm />
     </div>
   )
 }

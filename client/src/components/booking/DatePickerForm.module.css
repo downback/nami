@@ -4,7 +4,7 @@
   margin-top: 5px;
   /* border: 1px solid #ccc; */
   border: none;
-  border-bottom: 1px solid #ccc;
+  /* border-bottom: 1px solid #ccc; */
   background: transparent;
   outline: none;
   transition: border-color 0.3s ease-in-out;
@@ -15,5 +15,11 @@
 .datePickerCalendar {
   position: absolute;
   z-index: 1000;
-  transform: translatex(-50%);
+  transform: translatex(-30%);
+}
+
+@media (max-width: 768px) {
+  .datePickerCalendar {
+    transform: translatex(-40%);
+  }
 }

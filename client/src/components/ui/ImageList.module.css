@@ -15,6 +15,23 @@
   display: none;
 }
 
+.backButtonContainer {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.backButton {
+  color: black;
+  font-size: 0.7em;
+  transition: transform 0.2s;
+}
+
 .title {
   font-size: 2rem;
   color: black;
@@ -74,7 +91,29 @@
   font-family: var(--font-family-grotesque);
 }
 
+.goTopButton {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 100;
+  color: black;
+  font-size: 1.7em;
+}
+
 @media (max-width: 768px) {
+  .backButtonContainer {
+    top: 2rem;
+    left: 1.6rem;
+  }
+
+  .goTopButton {
+    bottom: 2rem;
+    right: 1.3rem;
+  }
+
   .title {
     font-size: 1.5rem;
   }

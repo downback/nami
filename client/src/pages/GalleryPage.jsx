@@ -4,9 +4,9 @@ import ImageList from "../components/ui/ImageList"
 
 const GalleryPage = () => {
   return (
-    <WhiteWrapper to="/">
-      <ImageList folderName="gallery/" title="Gallery" isCaption={true} />
-    </WhiteWrapper>
+    <>
+      <ImageList folderName="gallery/" title="Work" isCaption={true} />
+    </>
   )
 }
 

@@ -16,36 +16,37 @@ function LandingAnimation() {
   const landingSection2 = useRef()
   const landingSection3 = useRef()
   const landingSection4 = useRef()
+  const landingSection5 = useRef()
   const textAnimations = useRef([])
 
   useGSAP(
     () => {
-      textAnimations.current.forEach((target) => {
-        const sectionId = target ? target.getAttribute("data-target") : null
-        if (sectionId === null) {
-          console.error(
-            "Target element is null or does not have the 'data-target' attribute."
-          )
-        }
-        const targetSection = document.querySelector(`#${sectionId}`)
+      // textAnimations.current.forEach((target) => {
+      //   const sectionId = target ? target.getAttribute("data-target") : null
+      //   if (sectionId === null) {
+      //     console.error(
+      //       "Target element is null or does not have the 'data-target' attribute."
+      //     )
+      //   }
+      //   const targetSection = document.querySelector(`#${sectionId}`)
 
-        if (targetSection) {
-          const splitInstance = new SplitType(target, { types: "chars" })
-          const chars = splitInstance.chars
+      //   if (targetSection) {
+      //     const splitInstance = new SplitType(target, { types: "chars" })
+      //     const chars = splitInstance.chars
 
-          gsap.from(chars, {
-            duration: 0.5,
-            ease: "power2.out",
-            stagger: 0.05,
-            scrollTrigger: {
-              trigger: targetSection,
-              start: "top 100",
-              end: "+=100%",
-              toggleActions: "play none reverse none",
-            },
-          })
-        }
-      })
+      //     gsap.from(chars, {
+      //       duration: 0.5,
+      //       ease: "power2.out",
+      //       stagger: 0.05,
+      //       scrollTrigger: {
+      //         trigger: targetSection,
+      //         start: "top 100",
+      //         end: "+=100%",
+      //         toggleActions: "play none reverse none",
+      //       },
+      //     })
+      //   }
+      // })
 
       gsap.to(landingSection2.current, {
         scrollTrigger: {
@@ -66,6 +67,14 @@ function LandingAnimation() {
       gsap.to(landingSection4.current, {
         scrollTrigger: {
           trigger: "#landing_section-4",
+          start: "top top",
+          end: "+=100%",
+        },
+      })
+
+      gsap.to(landingSection5.current, {
+        scrollTrigger: {
+          trigger: "#landing_section-5",
           start: "top top",
           end: "+=100%",
         },
@@ -119,6 +128,20 @@ function LandingAnimation() {
             <div
               ref={(el) => (textAnimations.current[2] = el)}
               data-target="landing_section-4"
+            ></div>
+          </Link>
+        </div>
+      </section>
+      <section
+        id="landing_section-5"
+        className={styles.landingSection}
+        ref={landingSection5}
+      >
+        <div className={`${styles.landingContents} ${styles.galleryContent}`}>
+          <Link to="/contact" className={styles.contentsText}>
+            <div
+              ref={(el) => (textAnimations.current[3] = el)}
+              data-target="landing_section-5"
             ></div>
           </Link>
         </div>

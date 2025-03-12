@@ -15,6 +15,9 @@ export function Logo(props) {
   const logo = useRef()
   const { scene, camera } = useThree()
   const tl = gsap.timeline()
+
+  // animation location test
+
   // const { cameraPosition, cameraRotation, scenePosition, sceneRotation } =
   //   useControls({
   //     cameraPosition: {
@@ -34,12 +37,12 @@ export function Logo(props) {
   //       step: 0.01,
   //     },
   //     scenePosition: {
-  //       value: { x: 0, y: 0, z: 0 },
+  //       value: { x: 2.15, y: -0.75, z: -0.45 },
   //       step: 0.05,
   //     },
 
   //     sceneRotation: {
-  //       value: { x: 0, y: 0, z: 0 },
+  //       value: { x: 0.2, y: 0.47, z: -0.2 },
   //       step: 0.01,
   //     },
   //   })
@@ -67,32 +70,38 @@ export function Logo(props) {
   // })
 
   const [stopRotation, setStopRotation] = useState(false)
-  const startTime = useRef(null)
+  const [animationComplete, setAnimationComplete] = useState(false)
+
   useFrame(({ clock }) => {
     if (logo.current && !stopRotation) {
-      if (startTime.current === null) {
-        startTime.current = clock.getElapsedTime()
+      const elapsedTime = clock.getElapsedTime()
+
+      if (!animationComplete) {
+        logo.current.position.z += (-2.6 - logo.current.position.z) * 0.03
+        if (Math.abs(logo.current.position.z - -2.6) < 0.005) {
+          logo.current.position.z = -2.6
+          setAnimationComplete(true)
+        }
       }
 
-      const elapsedTime = clock.getElapsedTime() - startTime.current
-      logo.current.rotation.x = Math.sin(
-        elapsedTime * Math.PI * 0.1 - Math.PI / 2
-      )
-    } else {
-      startTime.current = null
+      logo.current.rotation.x = Math.sin(elapsedTime * Math.PI * 0.1)
     }
   })
 
   useGSAP(() => {
-    tl.from(scene.position, {
-      z: -5,
-      duration: 2.5,
-      ease: "power2.out",
+    // Animation for #landing_section-2
+    tl.to(logo.current.rotation, {
+      x: 0,
+      scrollTrigger: {
+        trigger: "#landing_section-2",
+        start: "top bottom",
+        end: "bottom bottom",
+        scrub: true,
+        immediateRender: false,
+      },
     })
-
-      // Animation for #landing_section-2
-      .to(logo.current.rotation, {
-        x: 0,
+      .to(logo.current.position, {
+        z: -2.6,
         scrollTrigger: {
           trigger: "#landing_section-2",
           start: "top bottom",
@@ -111,7 +120,9 @@ export function Logo(props) {
           end: "bottom bottom",
           scrub: true,
           immediateRender: false,
-          onEnter: () => setStopRotation(true),
+          onEnter: () => {
+            setStopRotation(true)
+          },
           onLeaveBack: () => setStopRotation(false),
         },
       })
@@ -158,12 +169,40 @@ export function Logo(props) {
 
       // Animation for #landing_section-4
       .to(scene.position, {
+        x: 0.25,
+        y: -0.2,
+        z: -0.1,
+        delay: 2,
+        scrollTrigger: {
+          trigger: "#landing_section-4",
+          start: "top bottom",
+          end: "bottom bottom",
+          scrub: true,
+          immediateRender: false,
+        },
+      })
+      .to(scene.rotation, {
+        x: 0.05,
+        y: 0,
+        z: 0,
+        delay: 2,
+        scrollTrigger: {
+          trigger: "#landing_section-4",
+          start: "top bottom",
+          end: "bottom bottom",
+          scrub: true,
+          immediateRender: false,
+        },
+      })
+
+      // Animation for #landing_section-5
+      .to(scene.position, {
         x: 0.1,
         y: 0,
         z: -3.5,
         delay: 2,
         scrollTrigger: {
-          trigger: "#landing_section-4",
+          trigger: "#landing_section-5",
           start: "top bottom",
           end: "bottom bottom",
           scrub: true,
@@ -176,13 +215,14 @@ export function Logo(props) {
         z: 0,
         delay: 2,
         scrollTrigger: {
-          trigger: "#landing_section-4",
+          trigger: "#landing_section-5",
           start: "top bottom",
           end: "bottom bottom",
           scrub: true,
           immediateRender: false,
         },
       })
+
     return () => {
       ScrollTrigger.getAll().forEach((st) => st.kill())
     }
@@ -200,8 +240,8 @@ export function Logo(props) {
         {...props}
         dispose={null}
         ref={logo}
-        position={[0, 0, -2.6]}
-        rotation={[0.5, 0, 0]}
+        position={[0, 0, -6]}
+        rotation={[0, 0, 0]}
         scale={[2.2, 2.2, 0.1]}
       >
         <mesh

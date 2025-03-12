@@ -64,6 +64,7 @@ const Navbar = () => {
           onComplete: () => {
             setTimeout(() => {
               navigate(`/${link.id}`)
+              window.scrollTo(0, 0)
               setIsNavigating(false)
             }, 600)
           },
@@ -93,9 +94,9 @@ const Navbar = () => {
               isNavigating ? styles.disabled : ""
             }`}
             ref={(el) => (linksRef.current[1] = el)}
-            id="flash"
+            id="booking"
           >
-            Flash
+            Booking
           </a>
         </li>
         <li>
@@ -105,19 +106,33 @@ const Navbar = () => {
               isNavigating ? styles.disabled : ""
             }`}
             ref={(el) => (linksRef.current[2] = el)}
-            id="booking"
+            id="flash"
           >
-            Booking
+            Flash
           </a>
         </li>
         <li>
           <a
             href="#landing_section-4"
-            className={styles.navItem}
+            className={`${styles.navItem} ${
+              isNavigating ? styles.disabled : ""
+            }`}
             ref={(el) => (linksRef.current[3] = el)}
             id="gallery"
           >
-            Gallery
+            Work
+          </a>
+        </li>
+        <li>
+          <a
+            href="#landing_section-5"
+            className={`${styles.navItem} ${
+              isNavigating ? styles.disabled : ""
+            }`}
+            ref={(el) => (linksRef.current[4] = el)}
+            id="contact"
+          >
+            Contact
           </a>
         </li>
       </ul>

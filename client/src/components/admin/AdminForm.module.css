@@ -119,6 +119,11 @@
   background-color: darkred;
 }
 
+.orderButton {
+  font-size: 2rem;
+  margin: 0 2rem;
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 0;

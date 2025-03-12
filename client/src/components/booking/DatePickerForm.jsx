@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
-import styles from "./DatePickerForm.module.css"
 import { collection, getDocs } from "firebase/firestore"
 import { db } from "../../services/firebase-config"
-import moment from "moment-timezone"
+
+import styles from "./DatePickerForm.module.css"
 
 function DatePickerForm({ selectedDate, setFieldValue }) {
   const [availableDates, setAvailableDates] = useState([])
@@ -45,7 +45,7 @@ function DatePickerForm({ selectedDate, setFieldValue }) {
       selected={selectedDate}
       onChange={(date) => setFieldValue("date", date)}
       dateFormat="yyyy/MM/dd"
-      placeholderText="Select a date"
+      placeholderText="Check available dates"
       className={styles.datePickerInput}
       calendarClassName={styles.datePickerCalendar}
       filterDate={isDateAvailable}
